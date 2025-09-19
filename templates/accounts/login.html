@@ -1,56 +1,111 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #f8f9fa;
-    }
-    .login-card {
-      max-width: 400px;
-      width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .powered-by {
-      font-size: 0.85rem;
-      color: #6c757d;
-      margin-top: 1rem;
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMS – Login</title>
+    <meta name="Description" content="PMS.Powered by GEOSYS IT SOLUTIONS PVT LTD">
+        <meta name="Author" content="Geosys IT Solutions Private Limited">
+    <link rel="icon" href="{% static 'images/LOGO.png' %}" type="image/x-icon">
+    <link href="{% static 'assets/libs/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet">
+    <link href="{% static 'styles/login.css' %}" rel="stylesheet">
+    <!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
 </head>
 <body>
 
-  <div class="container">
-    <div class="card login-card p-4 mx-auto">
-      <h3 class="text-center mb-4">Login</h3>
-      <form>
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" id="username" class="form-control" placeholder="Enter username">
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" id="password" class="form-control" placeholder="Enter password">
-        </div>
-        <button type="submit" class="btn btn-primary w-100">Login</button>
-      </form>
-      <div class="powered-by">
-        Powered by <strong>Geosys IT Solutions</strong>
-      </div>
-    </div>
-  </div>
+<div class="main-container">
+    <!-- LEFT: LOGIN CARD -->
+    <div class="left-section">
+        <div class="login-card">
+            <!-- ✅ MOBILE LOGO -->
+            <div class="mobile-logo text-center">
+                <img src="{% static 'images/LOGO.png' %}" alt="logo" class="logo">
+            </div>
 
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+            <h3>Sign In</h3>
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label text-white">Account Type</label>
+                    <select class="form-control" name="account_type" required>
+                        <option value="">Select Account Type</option>
+                        <option value="admin">Admin</option>
+                        <option value="agent">Agent</option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Username</label>
+                    <input type="number" class="form-control {% if auth_error %}is-invalid{% endif %}"
+                           name="username" placeholder="Enter username" required>
+                    {% if auth_error %}
+                        <div class="invalid-feedback">Invalid username or password</div>
+                    {% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label text-white">Password</label>
+                    <input type="password" class="form-control {% if auth_error %}is-invalid{% endif %}"
+                           name="password" placeholder="Enter password" required>
+                    {% if auth_error %}
+                        <div class="invalid-feedback">Invalid username or password</div>
+                    {% endif %}
+                </div>
+
+                <!-- Captcha -->
+                <div class="mb-3 d-flex gap-2 align-items-center">
+                    <div id="captcha-display"
+                        class="captcha-box p-1 text-center"
+                        style="width:100px;height:33px;font-weight:bold;
+                        user-select:none;color:#4B164C;">
+                        5090
+                    </div>
+                    <button type="button" class="btn refreshCaptcha" style="background-color: #4B164C;"
+                            onclick="refreshDemoCaptcha()"><i class="bi bi-arrow-clockwise" style="color: white;"></i></button>
+                    <input type="text" class="form-control" name="captcha" required placeholder="Enter captcha">
+                </div>
+
+                <button type="submit" class="btn btn-login mt-2">Submit</button>
+                <div class="forgot text-center mt-3">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- RIGHT: IMAGE + CONTENT -->
+    <div class="right-section">
+        <div class="right-inner">
+            <!-- ✅ DESKTOP LOGO IMAGE -->
+            <img src="{% static 'images/LOGO.png' %}" alt="Right Logo" class="right-image">
+            <div class="right-text">
+                <h2>Project Management System</h2>
+                <p>
+                    PMS is a powerful platform designed to streamline your workflow,
+                    manage teams efficiently, and track progress in real time.
+                </p>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="page-footer">
+    &copy; 2025 PMS. Powered by
+    <a href="https://geosysitsolutions.com/" target="_blank">GEOSYS IT SOLUTIONS PVT LTD</a>
+</footer>
+
+<script>
+function refreshDemoCaptcha(){
+    const code = Math.floor(1000 + Math.random()*9000);
+    document.getElementById('captcha-display').textContent = code;
+}
+</script>
+<script src="{% static 'assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 </body>
 </html>

@@ -1,0 +1,164 @@
+/* ======= GLOBAL BACKGROUND ======= */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: url("../images/bck.jpg") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ======= FLEX CONTAINER ======= */
+.main-container {
+    flex: 1;
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+
+/* LEFT SECTION (Login) */
+.left-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card {
+    width: 95%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.059);
+    border-radius: 20px;
+    padding: 40px 30px;
+    backdrop-filter: blur(1px);
+    box-shadow: 0 8px 35px rgba(0,0,0,0.35);
+}
+.login-card h3 {
+    font-family: 'Oswald', 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 2.2rem;         /* Bigger & more eye-catching */
+    font-weight: 700;          /* Strong bold look */
+    text-align: center;
+    letter-spacing: 2px;       /* Slight spacing for premium feel */
+    text-transform: uppercase; /* All caps for extra impact */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.35); /* Soft shadow for pop */
+}
+.form-control {
+    background-color: rgba(255,255,255,0.6);
+    border: 1px solid #DD88CF;
+    border-radius: 6px;
+    color: #4B164C;
+}
+.form-control:focus {
+    border-color: #DD88CF;
+    box-shadow: 0 0 6px rgba(221,136,207,0.5);
+}
+.btn-login {
+    background: #4B164C;
+    border: none;
+    width: 100%;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: 600;
+    color: #fff;
+}
+.btn-login:hover {
+    background: #DD88CF;
+    color: #4B164C;
+}
+.forgot a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+/* Right Section */
+.right-section {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.right-inner {
+    max-width: 500px;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+}
+.right-image {
+    max-width: 90%;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+}
+.right-text h2 {
+    font-family: 'Bebas Neue', 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 2.2rem;         /* Bigger & more eye-catching */
+    font-weight: 700;          /* Strong bold look */
+    text-align: center;
+    letter-spacing: 5px;       /* Slight spacing for premium feel */
+    text-transform: uppercase; /* All caps for extra impact */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.35); /* Soft shadow for pop */
+}
+.right-text p, .right-text ul {
+    color: #f0f0f0;
+    font-size: 1rem;
+}
+.right-text ul {
+    list-style: none;
+    padding: 0;
+}
+.right-text ul li {
+    margin: 8px 0;
+}
+
+/* Footer */
+.page-footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.281);
+    color: #fff;
+    font-size: 0.9rem;
+}
+.page-footer a {
+    color: #DD88CF;
+    text-decoration: none;
+}
+.page-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== MOBILE VIEW ===== */
+.mobile-logo {
+    display: none; /* Hidden on desktop */
+    margin-bottom: 20px;
+}
+.mobile-logo img.logo {
+    width: 160px;
+}
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .right-section {
+        display: none; /* ✅ Hide right side on mobile */
+    }
+    .mobile-logo {
+        display: block; /* ✅ Show logo on mobile */
+    }
+}
+
+/* ✅ Captcha Box with Background Image */
+.captcha-box {
+    background: url("../images/captcha.jpg") no-repeat center center;
+    background-size: cover;       /* Makes the image fit nicely */
+    border: 1px solid #4B164C;
+    border-radius: 10px;
+    color: #05166e;               /* Captcha text color */
+}
