@@ -1,0 +1,652 @@
+/* Construction Project Management System Staff Styles */
+:root {
+    --light-bg: #F5F5F5;
+    --light-accent: #F8E7F6;
+    --medium-accent: #DD88CF;
+    --dark-accent: #4B164C;
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #4B164C;
+}
+
+/* ===== HEADER ===== */
+body {
+    background-color: var(--light-bg);
+    margin: 0;
+    padding: 0 !important;
+}
+ .txt-dark{
+    color:#2d072e;
+ }
+/* Fixed header bar */
+.app-header {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    height: 80px; /* header bar height */
+    background: linear-gradient(135deg, var(--dark-accent) 0%, var(--medium-accent) 100%);
+    display: flex;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border-block-end:none !important;
+}
+
+/* Curve background directly under fixed header */
+.header-shape {
+    position: relative;
+    top: 80px;  /* push down by header height */
+    height: 380px; /* adjust shape height */
+    overflow: hidden;
+}
+
+.header-shape::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 470px;
+    background: linear-gradient(135deg, var(--dark-accent) 0%, var(--medium-accent) 100%);
+    border-radius: 0 0 65% 65% / 0 0 100% 100%;
+    transform: scaleX(1.6);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.2);
+}
+
+
+.brand-logo {
+    width: 150px;
+    height: 75px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.user-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid #fff; 
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.logout-icon {
+    color: #4B164C;
+    font-size: 1.6rem;
+    margin-left: 5px;
+    transition: all 0.3s ease;
+}
+.logout-icon:hover {
+    color: var(--light-accent);
+    transform: translateY(-2px);
+}
+
+
+/* Bigger on desktop */
+@media (min-width: 992px) {  /* adjust breakpoint as needed */
+    .notification-icon i {
+        font-size: 28px !important;
+        color: #4B164C !important;   /* increase to suit your header */
+    }
+}
+/* Content overlaps header a bit */
+.main-content.app-content {
+    margin-top: -120px !important; /* cards overlap curve */
+    position: relative;
+    z-index: 5;
+}
+/* ✅ Default (mobile & small screens) */
+.main-header-container .header-content-right {
+    padding-inline-start: 268px !important;
+    gap: 9px;
+}
+
+/* ✅ Desktop override */
+@media (min-width: 992px) {  /* or whatever breakpoint you use */
+    .main-header-container .header-content-right {
+        padding-inline-start: 66rem !important;
+    }
+}
+
+
+/* Page content adjustment */
+.main-content.app-content {
+    margin-top: -255px !important; /* Pull content up over the header */
+    margin-bottom: 4rem;
+    margin-left: 1px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Dashboard specific styles */
+.dashboard-welcome {
+    background: linear-gradient(135deg, var(--light-accent) 0%, rgba(248, 231, 246, 0.9) 100%);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.dashboard-welcome::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 120px;
+    height: 120px;
+    background: var(--medium-accent);
+    opacity: 0.2;
+    border-radius: 50%;
+}
+
+.dashboard-welcome::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100px;
+    height: 100px;
+    background: var(--dark-accent);
+    opacity: 0.1;
+    border-radius: 50%;
+}
+
+.welcome-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Card Styles */
+.card.custom-card {
+    background: linear-gradient(135deg, var(--light-bg) 0%, rgba(255, 255, 255, 0.9) 100%);
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.09);
+    border: 1px solid var(--light-accent);
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 2px var(--dark-accent);
+}
+
+.card.custom-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    background: linear-gradient(to right, var(--light-accent), white);
+    border-bottom: 1px solid var(--light-accent);
+    border-radius: 16px 16px 0 0 !important;
+    padding: 15px 20px;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--dark-accent);
+    border-color: var(--dark-accent);
+}
+
+.btn-primary:hover {
+    background-color: var(--medium-accent);
+    border-color: var(--medium-accent);
+    color: var(--text-dark);
+}
+
+.btn-outline-primary {
+    color: var(--dark-accent);
+    border-color: var(--dark-accent);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--dark-accent);
+    border-color: var(--dark-accent);
+    color: white;
+}
+
+/* Badge Styles */
+.badge {
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+    border-radius: 12px;
+}
+
+.bg-primary-transparent {
+    background-color: rgba(75, 22, 76, 0.15);
+    color: var(--dark-accent);
+}
+
+.bg-success-transparent {
+    background-color: rgba(40, 167, 69, 0.15);
+    color: #28a745;
+}
+
+.bg-warning-transparent {
+    background-color: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+}
+
+.bg-danger-transparent {
+    background-color: rgba(220, 53, 69, 0.15);
+    color: #dc3545;
+}
+
+.bg-info-transparent {
+    background-color: rgba(23, 162, 184, 0.15);
+    color: #17a2b8;
+}
+
+/* Table Styles */
+.table th {
+    font-weight: 600;
+    color: var(--text-light) !important;
+    background-color: #4B164C;
+}
+
+
+/* Profile Card */
+.profile-card-image {
+    flex: 0 0 auto;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.profile-card-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--dark-accent);
+}
+
+.profile-card-info h5 {
+    font-size: 18px;
+    color: var(--dark-accent);
+}
+
+.profile-card-info p {
+    font-size: 14px;
+}
+
+.profile-about-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Modern Footer Styles */
+.app-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(135deg, var(--medium-accent) 0%, var(--light-accent) 100%);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 0 16px;
+    border-top: 1px solid var(--light-accent);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+    height: 70px;
+}
+
+.footer-item {
+    text-align: center;
+    color: #555555;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    padding: 8px 0;
+    border-radius: 16px;
+    position: relative;
+}
+
+.footer-item:hover {
+    color: var(--dark-accent);
+    transform: translateY(-3px);
+}
+
+.footer-item.active {
+    color: var(--dark-accent);
+}
+
+.footer-item.active::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 6px;
+    background: var(--dark-accent);
+    border-radius: 3px;
+}
+
+.footer-item i {
+    font-size: 1.4rem;
+    display: block;
+    margin: 0 auto 4px;
+    transition: all 0.3s ease;
+}
+
+.footer-item.active i {
+    transform: scale(1.15);
+}
+
+.footer-item p {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding-top: 160px;
+    }
+    
+    .header-shape {
+        height: 180px;
+    }
+    
+    .header-shape::before {
+        height: 130px;
+    }
+    
+    .brand-logo {
+        width: 120px;
+        height: 60px;
+    }
+    
+    .main-content.app-content {
+        margin-top: -147px !important;
+    }
+    
+    .dashboard-welcome {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 140px;
+    }
+    
+    .header-shape {
+        height: 160px;
+    }
+    
+    .header-shape::before {
+        height: 110px;
+    }
+    
+    .header-content {
+        padding: 20px 0 15px;
+    }
+    
+    .brand-logo {
+        width: 100px;
+        height: 50px;
+    }
+    
+    .main-content.app-content {
+        margin-top: -147px !important;
+    }
+    
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .notification-icon, .messages-icon, .logout-icon {
+        font-size: 1.5rem;
+        color: #4B164C;
+    }
+    
+    .header-content-right {
+        gap: 15px;
+    }
+    
+    .profile-card-image {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .profile-card-info h5 {
+        font-size: 16px;
+    }
+    
+    .profile-card-info p {
+        font-size: 13px;
+    }
+    
+    .app-footer {
+        padding: 10px 0 14px;
+        height: 65px;
+    }
+    
+    .footer-item i {
+        font-size: 1.3rem;
+    }
+    
+    .footer-item p {
+        font-size: 10px;
+    }
+}
+
+/* Construction-themed background */
+.construction-wave {
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--light-accent) 100%);
+    position: relative;
+    overflow: hidden;
+    border: none !important;
+}
+
+.construction-wave::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, 
+        var(--light-accent) 0%, 
+        var(--medium-accent) 50%, 
+        var(--dark-accent) 100%);
+    z-index: 1;
+}
+
+/* Hard hat icon styling */
+.hard-hat-icon {
+    background-color: var(--dark-accent);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-right: -12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Additional styles for all pages */
+.page-header-breadcrumb {
+    padding: 15px 0;
+}
+
+.card-title {
+    color: #4B164C;
+    font-weight: 600;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #4B164C;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 1px solid #DD88CF;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+}
+
+.form-control:focus {
+    border-color: #4B164C;
+    box-shadow: 0 0 0 0.2rem rgba(75, 22, 76, 0.25);
+}
+
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.table th {
+    font-weight: 600;
+    color: #4B164C;
+}
+.btn-primary {
+    background-color: #4B164C !important;
+    border-color: #4B164C !important;
+}
+.btn-outline-primary.active{
+background-color: #4B164C !important;
+border-color: #4B164C !important;
+}
+.avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.badge {
+    font-size: 0.75em;
+    padding: 0.35em 0.65em;
+}
+
+.progress {
+    border-radius: 10px;
+}
+
+.progress-bar {
+    border-radius: 10px;
+}
+
+.dropdown-menu {
+    border-radius: 8px;
+    border: 1px solid #F8E7F6;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    margin: 0.1rem 0.5rem;
+    width: auto;
+}
+
+.dropdown-item:hover {
+    background-color: #F8E7F6;
+    color: #4B164C;
+}
+
+/* Additional styles for Projects cards */
+ .stat-item {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 12px;
+        padding: 10px 5px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        min-width: 70px;
+        box-shadow: 0 2px 2px var(--dark-accent);
+
+    }
+    
+    .stat-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+    }
+    
+    .stat-item:nth-child(1) .stat-icon {
+        background-color: rgba(75, 22, 76, 0.15);
+        color: #4B164C;
+    }
+    
+    .stat-item:nth-child(2) .stat-icon {
+        background-color: rgba(40, 167, 69, 0.15);
+        color: #28a745;
+    }
+    
+    .stat-item:nth-child(3) .stat-icon {
+        background-color: rgba(255, 193, 7, 0.15);
+        color: #ffc107;
+    }
+    
+    .stat-item:nth-child(4) .stat-icon {
+        background-color: rgba(23, 162, 184, 0.15);
+        color: #17a2b8;
+    }
+    
+    .stat-number {
+        font-size: 16px;
+        line-height: 1.2;
+    }
+    
+    .stat-label {
+        font-size: 11px;
+        color: #6c757d;
+        line-height: 1.2;
+    }
+    
+    @media (max-width: 360px) {
+        .stat-item {
+            padding: 8px 3px;
+            min-width: 65px;
+        }
+        
+        .stat-icon {
+            width: 25px;
+            height: 25px;
+            font-size: 12px;
+        }
+        
+        .stat-number {
+            font-size: 14px;
+        }
+        
+        .stat-label {
+            font-size: 10px;
+        }
+    }
+
+
+
+
+
+    

@@ -1,0 +1,332 @@
+{% extends 'staff/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="my-3 page-header-breadcrumb d-flex align-items-center justify-content-between">
+        <h1 class="page-title fw-bold fs-18 mb-0 txt-dark"> 
+            <span><i class="ri-calendar-event-fill"></i> My Activities</span> 
+        </h1>
+        <a href="{% url 'staff:log_activity' %}" class="btn btn-sm btn-primary">
+            <i class="ri-add-line me-1"></i> Log Activity
+        </a>
+    </div>
+
+    <!-- Filters -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2 align-items-center">
+                        <span class="fw-semibold">Filter by:</span>
+                        <select class="form-select form-select-sm" style="width: 160px;">
+                            <option>All Projects</option>
+                            <option>Riverfront Towers</option>
+                            <option>Harbor View Residences</option>
+                            <option>Westside Commercial</option>
+                        </select>
+                        <select class="form-select form-select-sm" style="width: 140px;">
+                            <option>All Types</option>
+                            <option>Site Work</option>
+                            <option>Meetings</option>
+                            <option>Inspections</option>
+                            <option>Documentation</option>
+                        </select>
+                        <input type="date" class="form-control form-control-sm" style="width: 150px;">
+                        <button class="btn btn-sm btn-outline-primary">
+                            <i class="ri-filter-line me-1"></i> Apply
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Activities Timeline with Expenses -->
+    <div class="row">
+        <div class="col-xxl-12">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">Recent Activities & Expenses</div>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-sm btn-outline-primary active">Day</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary">Week</button>
+                        <button type="button" class="btn btn-sm btn-outline-primary">Month</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="activities-timeline">
+                        <!-- Today -->
+                        <div class="timeline-date">Today</div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point"></div>
+                            <div class="timeline-content">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Concrete Pouring - Level 5</h6>
+                                    <span class="text-muted fs-12">2 hours ago</span>
+                                </div>
+                                <p class="mb-1 text-muted">Riverfront Towers • 4.5 hours</p>
+                                <p class="mb-0">Supervised concrete pouring operation for the 5th floor slab. All safety protocols followed.</p>
+                                <div class="mt-2 d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-primary-transparent">Site Work</span>
+                                    <span class="text-success fw-semibold">₹1,200</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point bg-warning"></div>
+                            <div class="timeline-content">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Supplier Meeting</h6>
+                                    <span class="text-muted fs-12">4 hours ago</span>
+                                </div>
+                                <p class="mb-1 text-muted">Harbor View Residences • 1.5 hours</p>
+                                <p class="mb-0">Met with concrete suppliers to discuss delivery schedule for next week.</p>
+                                <div class="mt-2 d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-info-transparent">Meeting</span>
+                                    <span class="text-success fw-semibold">₹45</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Yesterday -->
+                        <div class="timeline-date">Yesterday</div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point bg-info"></div>
+                            <div class="timeline-content">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Safety Inspection</h6>
+                                    <span class="text-muted fs-12">Yesterday, 3:45 PM</span>
+                                </div>
+                                <p class="mb-1 text-muted">Riverfront Towers • 2 hours</p>
+                                <p class="mb-0">Conducted weekly safety inspection. Noted two issues that need addressing.</p>
+                                <div class="mt-2 d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-warning-transparent">Inspection</span>
+                                    <span class="text-success fw-semibold">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point bg-success"></div>
+                            <div class="timeline-content">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Progress Report</h6>
+                                    <span class="text-muted fs-12">Yesterday, 11:30 AM</span>
+                                </div>
+                                <p class="mb-1 text-muted">Documentation • 1 hour</p>
+                                <p class="mb-0">Prepared weekly progress report for client review and approval.</p>
+                                <div class="mt-2 d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-secondary-transparent">Documentation</span>
+                                    <span class="text-success fw-semibold">₹0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Day Before Yesterday -->
+                        <div class="timeline-date">22 Nov 2023</div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-point bg-danger"></div>
+                            <div class="timeline-content">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-1">Material Purchase</h6>
+                                    <span class="text-muted fs-12">2 days ago</span>
+                                </div>
+                                <p class="mb-1 text-muted">Westside Commercial • 3 hours</p>
+                                <p class="mb-0">Purchased construction materials for upcoming phase.</p>
+                                <div class="mt-2 d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-danger-transparent">Materials</span>
+                                    <span class="text-success fw-semibold">₹7,500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weekly Summary -->
+    <div class="row">
+        <div class="col-xxl-6">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">Weekly Time Summary</div>
+                </div>
+                <div class="card-body">
+                    <div id="weekly-time-chart"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-xxl-6">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">Activity Distribution</div>
+                </div>
+                <div class="card-body">
+                    <div id="activity-distribution-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Weekly Time Chart
+        var timeOptions = {
+            series: [{
+                name: 'Hours',
+                data: [6.5, 7, 8.5, 6, 9, 0, 0]
+            }],
+            chart: {
+                height: 250,
+                type: 'bar',
+                toolbar: {
+                    show: false
+                }
+            },
+            colors: ['#4B164C'],
+            plotOptions: {
+                bar: {
+                    borderRadius: 8,
+                    columnWidth: '45%',
+                }
+            },
+            dataLabels: {
+                enabled: false
+            },
+            xaxis: {
+                categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            },
+            yaxis: {
+                title: {
+                    text: 'Hours'
+                }
+            }
+        };
+
+        var timeChart = new ApexCharts(document.querySelector("#weekly-time-chart"), timeOptions);
+        timeChart.render();
+        
+        // Activity Distribution Chart
+        var distributionOptions = {
+            series: [44, 55, 41, 17],
+            labels: ['Site Work', 'Meetings', 'Inspections', 'Documentation'],
+            chart: {
+                type: 'donut',
+                height: 250,
+                toolbar: {
+                    show: false
+                }
+            },
+            colors: ['#4B164C', '#DD88CF', '#F8E7F6', '#A45FB9'],
+            legend: {
+                position: 'bottom'
+            },
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: '65%'
+                    }
+                }
+            }
+        };
+
+        var distributionChart = new ApexCharts(document.querySelector("#activity-distribution-chart"), distributionOptions);
+        distributionChart.render();
+    });
+</script>
+
+<style>
+    .activities-timeline {
+        position: relative;
+        padding-left: 30px;
+    }
+    
+    .timeline-date {
+        position: relative;
+        padding: 8px 0;
+        margin: 20px 0 10px;
+        font-weight: 600;
+        color: #4B164C;
+    }
+    
+    .timeline-date:before {
+        content: '';
+        position: absolute;
+        left: -30px;
+        top: 50%;
+        width: 12px;
+        height: 12px;
+        background: #4B164C;
+        border-radius: 50%;
+        transform: translateY(-50%);
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding: 15px 0;
+    }
+    
+    .timeline-point {
+        position: absolute;
+        left: -38px;
+        top: 24px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #4B164C;
+        z-index: 1;
+    }
+    
+    .timeline-point.bg-warning {
+        background: #FF7F3E;
+    }
+    
+    .timeline-point.bg-info {
+        background: #17a2b8;
+    }
+    
+    .timeline-point.bg-success {
+        background: #28a745;
+    }
+    
+    .timeline-point.bg-danger {
+        background: #dc3545;
+    }
+    
+    .timeline-content {
+        background: #F8E7F6;
+        padding: 15px;
+        border-radius: 12px;
+        border-left: 3px solid #4B164C;
+    }
+    
+    .timeline-item:after {
+        content: '';
+        position: absolute;
+        left: -31px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #DD88CF;
+    }
+    
+    .timeline-item:last-child:after {
+        display: none;
+    }
+
+    /* Expense amount styling */
+    .text-success.fw-semibold {
+        font-size: 1.1rem;
+    }
+</style>
+{% endblock %}

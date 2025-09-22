@@ -1,0 +1,482 @@
+{% extends 'staff/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="my-3 page-header-breadcrumb d-flex align-items-center justify-content-between">
+        <h1 class="page-title fw-bold fs-18 mb-0 txt-dark"> 
+            <span><i class="ri-building-fill"></i> All Projects</span> 
+        </h1>
+        <div>
+            <button class="btn btn-sm btn-primary me-2" id="filterToggle">
+                <i class="ri-filter-line me-1"></i> Filters
+            </button>
+            <a href="{% url 'staff:projects' %}" class="btn btn-sm btn-primary me-2">
+                <i class="ri-arrow-left-line me-1"></i> Back to Projects
+            </a>
+            <!-- <button class="btn btn-sm btn-primary">
+                <i class="ri-add-line me-1"></i> New Project
+            </button> -->
+        </div>
+    </div>
+
+    <!-- Filters Section -->
+    <div class="row mb-4" id="filtersSection" style="display: none;">
+        <div class="col-12">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" id="statusFilter">
+                                    <option value="all">All Statuses</option>
+                                    <option value="active">Active</option>
+                                    <option value="planning">Planning</option>
+                                    <option value="onhold">On Hold</option>
+                                    <option value="completed">Completed</option>
+                                    <option value="upcoming">Upcoming</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Priority</label>
+                                <select class="form-select" id="priorityFilter">
+                                    <option value="all">All Priorities</option>
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Date Range</label>
+                                <input type="date" class="form-control" id="dateFilter">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="mb-3">
+                                <label class="form-label">Search</label>
+                                <input type="text" class="form-control" placeholder="Search projects...">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-sm btn-outline-secondary me-2" id="resetFilters">
+                            Reset
+                        </button>
+                        <button class="btn btn-sm btn-primary">
+                            Apply Filters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+        <!-- Project 1 - Active -->
+        <div class="col" data-status="active" data-priority="high">
+            <div class="card custom-card project-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-primary-transparent">Active</span>
+                        <span class="badge bg-danger-transparent">High Priority</span>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="card-title mb-1">Riverfront Towers</h5>
+                        <p class="text-muted mb-0">High-rise residential complex with 200 units</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Progress</span>
+                            <span class="fw-semibold">65%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="text-muted d-block">Start Date</span>
+                                <span class="fw-semibold">15 Mar 2023</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block">Deadline</span>
+                                <span class="fw-semibold">15 Dec 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-muted">Budget</span>
+                            <span class="fw-semibold d-block">₹2.5 Cr</span>
+                        </div>
+                        <a href="{% url 'staff:project_detail' project_id=1 %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 2 - Planning -->
+        <div class="col" data-status="planning" data-priority="medium">
+            <div class="card custom-card project-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-info-transparent">Planning</span>
+                        <span class="badge bg-warning-transparent">Medium Priority</span>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="card-title mb-1">Harbor View Residences</h5>
+                        <p class="text-muted mb-0">Luxury waterfront apartments with premium amenities</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Progress</span>
+                            <span class="fw-semibold">30%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="text-muted d-block">Start Date</span>
+                                <span class="fw-semibold">01 Jan 2024</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block">Deadline</span>
+                                <span class="fw-semibold">30 Mar 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-muted">Budget</span>
+                            <span class="fw-semibold d-block">₹1.8 Cr</span>
+                        </div>
+                        <a href="{% url 'staff:project_detail' project_id=2 %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project 3 - On Hold -->
+        <div class="col" data-status="onhold" data-priority="low">
+            <div class="card custom-card project-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-warning-transparent">On Hold</span>
+                        <span class="badge bg-success-transparent">Low Priority</span>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="card-title mb-1">Westside Commercial Complex</h5>
+                        <p class="text-muted mb-0">Mixed-use development with retail and office spaces</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Progress</span>
+                            <span class="fw-semibold">45%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="text-muted d-block">Start Date</span>
+                                <span class="fw-semibold">10 Jun 2023</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block">Deadline</span>
+                                <span class="fw-semibold">TBD</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-muted">Budget</span>
+                            <span class="fw-semibold d-block">₹3.2 Cr</span>
+                        </div>
+                        <a href="{% url 'staff:project_detail' project_id=3 %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 4 - Completed -->
+        <div class="col" data-status="completed" data-priority="medium">
+            <div class="card custom-card project-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-success-transparent">Completed</span>
+                        <span class="badge bg-warning-transparent">Medium Priority</span>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="card-title mb-1">Parkview Hospital</h5>
+                        <p class="text-muted mb-0">Multi-specialty healthcare facility</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Progress</span>
+                            <span class="fw-semibold">100%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="text-muted d-block">Start Date</span>
+                                <span class="fw-semibold">01 Jan 2023</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block">Completed</span>
+                                <span class="fw-semibold">15 Oct 2023</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-muted">Budget</span>
+                            <span class="fw-semibold d-block">₹4.5 Cr</span>
+                        </div>
+                        <a href="{% url 'staff:project_detail' project_id=4 %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 5 - Upcoming -->
+        <div class="col" data-status="upcoming" data-priority="high">
+            <div class="card custom-card project-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-secondary-transparent">Upcoming</span>
+                        <span class="badge bg-danger-transparent">High Priority</span>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="card-title mb-1">City Center Mall</h5>
+                        <p class="text-muted mb-0">Modern shopping complex with entertainment zone</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Progress</span>
+                            <span class="fw-semibold">0%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="text-muted d-block">Planned Start</span>
+                                <span class="fw-semibold">01 Feb 2024</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block">Deadline</span>
+                                <span class="fw-semibold">30 Nov 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-muted">Budget</span>
+                            <span class="fw-semibold d-block">₹5.8 Cr</span>
+                        </div>
+                        <a href="{% url 'staff:project_detail' project_id=5 %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 6 - Active -->
+        <div class="col" data-status="active" data-priority="medium">
+            <div class="card custom-card project-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <span class="badge bg-primary-transparent">Active</span>
+                        <span class="badge bg-warning-transparent">Medium Priority</span>
+                    </div>
+                    <div class="mb-3">
+                        <h5 class="card-title mb-1">Green Valley Apartments</h5>
+                        <p class="text-muted mb-0">Eco-friendly residential project</p>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="text-muted">Progress</span>
+                            <span class="fw-semibold">78%</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <span class="text-muted d-block">Start Date</span>
+                                <span class="fw-semibold">01 May 2023</span>
+                            </div>
+                            <div class="col-6">
+                                <span class="text-muted d-block">Deadline</span>
+                                <span class="fw-semibold">28 Feb 2024</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="text-muted">Budget</span>
+                            <span class="fw-semibold d-block">₹2.2 Cr</span>
+                        </div>
+                        <a href="{% url 'staff:project_detail' project_id=6 %}" class="btn btn-sm btn-outline-primary">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="row">
+        <div class="col-12">
+            <nav aria-label="Projects pagination">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+                </nav>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Toggle filters section
+        const filterToggle = document.getElementById('filterToggle');
+        const filtersSection = document.getElementById('filtersSection');
+        
+        filterToggle.addEventListener('click', function() {
+            if (filtersSection.style.display === 'none') {
+                filtersSection.style.display = 'block';
+            } else {
+                filtersSection.style.display = 'none';
+            }
+        });
+
+        // Filter functionality
+        const statusFilter = document.getElementById('statusFilter');
+        const priorityFilter = document.getElementById('priorityFilter');
+        const resetFilters = document.getElementById('resetFilters');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        function filterProjects() {
+            const statusValue = statusFilter.value;
+            const priorityValue = priorityFilter.value;
+
+            projectCards.forEach(card => {
+                const cardStatus = card.closest('.col').getAttribute('data-status');
+                const cardPriority = card.closest('.col').getAttribute('data-priority');
+
+                const statusMatch = statusValue === 'all' || cardStatus === statusValue;
+                const priorityMatch = priorityValue === 'all' || cardPriority === priorityValue;
+
+                if (statusMatch && priorityMatch) {
+                    card.closest('.col').style.display = 'block';
+                } else {
+                    card.closest('.col').style.display = 'none';
+                }
+            });
+        }
+
+        statusFilter.addEventListener('change', filterProjects);
+        priorityFilter.addEventListener('change', filterProjects);
+
+        resetFilters.addEventListener('click', function() {
+            statusFilter.value = 'all';
+            priorityFilter.value = 'all';
+            filterProjects();
+        });
+    });
+</script>
+
+<style>
+    .project-card {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1) !important;
+    }
+    
+    .avatar-group {
+        display: flex;
+    }
+    
+    .avatar {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+    
+    .avatar-xs {
+        width: 24px;
+        height: 24px;
+        font-size: 12px;
+    }
+    
+    .avatar-group .avatar {
+        margin-right: -8px;
+        border: 2px solid #fff;
+    }
+    
+    .avatar-initials {
+        background-color: #DD88CF;
+        color: white;
+        font-weight: 500;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #4B164C;
+        border-color: #4B164C;
+    }
+
+    .pagination .page-link {
+        color: #4B164C;
+    }
+
+    .pagination .page-link:hover {
+        color: #4B164C;
+        background-color: #F8E7F6;
+    }
+</style>
+{% endblock %}
