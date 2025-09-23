@@ -1,0 +1,131 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+    <h3 class="mb-4">Project Reports</h3>
+
+    <!-- Filters -->
+    <div class="card custom-card shadow-sm mb-4">
+        <div class="card-body">
+            <form class="row g-3">
+                <!-- Project -->
+                <div class="col-md-4">
+                    <label class="form-label">Project</label>
+                    <select class="form-select">
+                        <option value="">-- Select Project --</option>
+                        <option value="proj1">Residential Villa</option>
+                        <option value="proj2">Office Renovation</option>
+                        <option value="proj3">Apartment Complex</option>
+                    </select>
+                </div>
+                <!-- Date Range -->
+                <div class="col-md-4">
+                    <label class="form-label">From Date</label>
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">To Date</label>
+                    <input type="date" class="form-control">
+                </div>
+                <!-- Status -->
+                <div class="col-md-4">
+                    <label class="form-label">Status</label>
+                    <select class="form-select">
+                        <option value="">-- Select Status --</option>
+                        <option value="ongoing">Ongoing</option>
+                        <option value="completed">Completed</option>
+                        <option value="onhold">On Hold</option>
+                    </select>
+                </div>
+                <!-- Buttons -->
+                <div class="col-md-12 text-end">
+                    <button type="submit" class="btn btn-primary me-2"><i class="ri-search-line"></i> Filter</button>
+                    <button type="reset" class="btn btn-secondary"><i class="ri-refresh-line"></i> Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card custom-card text-center shadow-sm p-3">
+                <h6>Active Projects</h6>
+                <h5 class="text-success">3</h5>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card custom-card text-center shadow-sm p-3">
+                <h6>Total Budget</h6>
+                <h5 class="text-primary">₹12,00,000</h5>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card custom-card text-center shadow-sm p-3">
+                <h6>Amount Spent</h6>
+                <h5 class="text-danger">₹7,50,000</h5>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card custom-card text-center shadow-sm p-3">
+                <h6>Remaining</h6>
+                <h5 class="text-success">₹4,50,000</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Table -->
+    <div class="card custom-card shadow-sm">
+        <div class="card-body">
+            <h5 class="card-title mb-3">Detailed Report</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>#</th>
+                            <th>Project Name</th>
+                            <th>Status</th>
+                            <th>Budget (₹)</th>
+                            <th>Spent (₹)</th>
+                            <th>Deadline</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Residential Villa</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                            <td>₹3,00,000</td>
+                            <td>₹2,80,000</td>
+                            <td>2025-02-10</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Residential Villa</td>
+                            <td><span class="badge bg-warning text-dark">Ongoing</span></td>
+                            <td>₹2,00,000</td>
+                            <td>₹1,20,000</td>
+                            <td>2025-03-15</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Residential Villa</td>
+                            <td><span class="badge bg-info">On Hold</span></td>
+                            <td>₹1,50,000</td>
+                            <td>₹50,000</td>
+                            <td>2025-04-05</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Office Renovation</td>
+                            <td><span class="badge bg-danger">Delayed</span></td>
+                            <td>₹5,50,000</td>
+                            <td>₹4,00,000</td>
+                            <td>2025-02-28</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

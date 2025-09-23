@@ -1,0 +1,62 @@
+{% extends "master/base.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <div class="col-md-12">
+        <div class="card custom-card shadow-sm mb-4">
+            <div class="card-header bg-light d-flex justify-content-between">
+                <h6 class="mb-0">Add New Customer</h6>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{% url 'master:create-customer' %}">
+                    {% csrf_token %}
+                    <div class="row g-3">
+
+                        <!-- Customer Name -->
+                        <div class="col-md-4">
+                            <label for="name" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Enter customer name" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-md-4">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="col-md-4">
+                            <label for="phone" class="form-label">Phone</label>
+                            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" required>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="col-md-12">
+                            <label for="notes" class="form-label">Notes</label>
+                            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Additional notes (optional)"></textarea>
+                        </div>
+
+                        <!-- Active -->
+                        <div class="col-md-4">
+                            <label for="is_active" class="form-label d-block">Active</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="is_active" name="is_active" checked>
+                                <label class="form-check-label" for="is_active">Yes</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Form Buttons -->
+                    <div class="mt-4 d-flex">
+                        <button type="reset" class="btn btn-secondary me-2">Reset</button>
+                        <button type="submit" class="btn btn-primary">Add Customer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

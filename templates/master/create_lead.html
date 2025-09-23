@@ -1,0 +1,115 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+<div class="col-md-12">
+    <div class="card custom-card shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="ri-user-add-line"></i> Add New Lead</h5>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+                <div class="row">
+                    <!-- Lead Name -->
+                    <div class="col-md-4 mb-3">
+                        <label for="name" class="form-label">Lead Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter lead name" required>
+                    </div>
+
+                    <!-- Company -->
+                    <div class="col-md-4 mb-3">
+                        <label for="company" class="form-label">Customer</label>
+                        <select class="form-select" id="company" name="company" required>
+                            <option value="">-- Select Customer --</option>
+                            <option value="acme">Acme Corp</option>
+                            <option value="globex">Globex Ltd</option>
+                            <option value="innotech">Innotech Solutions</option>
+                            <option value="techworld">TechWorld</option>
+                            <option value="brightpath">BrightPath</option>
+                        </select>
+                    </div>
+
+                    <!-- Position -->
+                    <div class="col-md-4 mb-3">
+                        <label for="position" class="form-label">Position</label>
+                        <input type="text" class="form-control" id="position" name="position" placeholder="Enter position">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Email -->
+                    <div class="col-md-4 mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="lead@example.com">
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="col-md-4 mb-3">
+                        <label for="phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="phone" name="phone" placeholder="+1 555-1234">
+                    </div>
+
+                    <!-- Status -->
+                    <div class="col-md-4 mb-3">
+                        <label for="status" class="form-label">Status</label>
+                        <select class="form-select" id="status" name="status">
+                            <option value="New">New</option>
+                            <option value="Contacted">Contacted</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Follow-up Required">Follow-up Required</option>
+                            <option value="Converted">Converted</option>
+                            <option value="Lost">Lost</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Enter additional details"></textarea>
+                    </div>
+                </div>
+
+                <!-- Follow-up Required -->
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="followUpCheck" name="follow_up_required">
+                    <label class="form-check-label fw-semibold" for="followUpCheck">
+                        Follow-up Required
+                    </label>
+                </div>
+
+                <!-- Follow-up Fields (hidden by default) -->
+                <div id="followUpFields" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="follow_up_date" class="form-label">Follow-up Date</label>
+                            <input type="date" class="form-control" id="follow_up_date" name="follow_up_date">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="follow_up_notes" class="form-label">Follow-up Notes</label>
+                            <input type="text" class="form-control" id="follow_up_notes" name="follow_up_notes" placeholder="E.g. Call after 2 days">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex mt-5">
+                    <a href="" class="btn btn-secondary me-2">Cancel</a>
+                    <button type="submit" class="btn btn-primary">Save Lead</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Script to toggle follow-up fields -->
+<script>
+    document.getElementById("followUpCheck").addEventListener("change", function() {
+        const followUpFields = document.getElementById("followUpFields");
+        followUpFields.style.display = this.checked ? "block" : "none";
+    });
+</script>
+
+{% endblock %}

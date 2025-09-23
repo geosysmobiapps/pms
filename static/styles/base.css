@@ -1,0 +1,96 @@
+:root {
+    --primary-color: #4B164C;
+    --secondary-color: #DD88CF;
+    --accent-color: #F8E7F6;
+    --light-color: #F5F5F5;
+    --xlight-color: #fed5ff;
+    --light-bg: #F5F5F5;
+    --light-accent: #F8E7F6;
+    --medium-accent: #DD88CF;
+    --dark-accent: #4B164C;
+    --text-dark: #333333;
+    --text-light: #FFFFFF;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #4B164C;
+    --input-border: #cdb7cd;
+    --primary05: #c393c4;
+}
+
+/* Construction Project Management System Staff Styles */
+
+.app-sidebar {
+    background-color: var(--primary-color)!important;
+}
+
+.side-menu__label, .side-menu__icon, .side-menu__angle, .side-menu__item {
+  color: var(--xlight-color)!important;
+}
+
+.bg-primary {
+  background-color: var(--primary-color)!important;
+}
+
+.bg-secondary {
+  background-color: var(--secondary-color)!important;
+}
+
+.bg-accent {
+  background-color: var(--accent-color)!important;
+}
+
+.bg-light {
+  background-color: var(--light-color)!important;
+}
+
+.bg-xlight {
+  background-color: var(--xlight-color)!important;
+}
+
+.bg-grad-3 {
+    background: linear-gradient(
+      90deg,
+      var(--light-color) 0%,
+      var(--accent-color) 50%,
+      var(--secondary-color) 100%,
+    );
+}
+
+.btn-primary {
+  background-color: var(--primary-color)!important;
+  border-color: var(--primary-color)!important;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color)!important;
+  border-color: var(--secondary-color)!important;
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color)!important;
+  border-color: var(--secondary-color)!important;
+}
+
+.btn-secondary:hover {
+  background-color: var(--xlight-color)!important;
+  border-color: var(--xlight-color)!important;
+}
+
+.main-sidebar-header .logo {
+    height:3rem!important;
+    margin-top: 2em;
+}
+
+.h100 {
+  height: 100%;
+}
+
+#scroll-vertical_filter {
+    margin-bottom: 1em;
+}
+
+thead th {
+  background-color: var(--primary-color)!important;
+  color: var(--xlight-color)!important;
+}

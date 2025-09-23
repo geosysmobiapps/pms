@@ -1,16 +1,5 @@
-/* Construction Project Management System Staff Styles */
-:root {
-    --light-bg: #F5F5F5;
-    --light-accent: #F8E7F6;
-    --medium-accent: #DD88CF;
-    --dark-accent: #4B164C;
-    --text-dark: #333333;
-    --text-light: #FFFFFF;
-    --success: #28a745;
-    --warning: #ffc107;
-    --danger: #dc3545;
-    --info: #4B164C;
-}
+@import url("base.css");
+
 
 /* ===== HEADER ===== */
 body {

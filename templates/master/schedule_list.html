@@ -1,0 +1,151 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+<div class="row mt-4">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-title">All Schedules</div>
+                <a href="}" class="btn btn-sm btn-primary">
+                    <i class="bi bi-plus-circle me-1"></i> Add Schedule
+                </a>
+            </div>
+            
+            <!-- Filters -->
+            <div class="card-body">
+                <div class="row g-2 mb-3">
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">-- Filter by Customer --</option>
+                            <option value="1">Acme Corp</option>
+                            <option value="2">Globex Ltd</option>
+                            <option value="3">Innotech Solutions</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">-- Filter by Staff --</option>
+                            <option value="1">John Doe</option>
+                            <option value="2">Jane Smith</option>
+                            <option value="3">Michael Johnson</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">-- Filter by Priority --</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">-- Filter by Status --</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Paused">Paused</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">-- Filter by Lead/Project --</option>
+                            <option value="Pending">Residential Complex	</option>
+                            <option value="Completed">Shopping Mall Renovation	</option>
+                            <option value="Paused">Highway Expansion</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <input class="form-control" placeholder="Search">
+                    </div>
+                </div>
+
+                <!-- Schedule Table -->
+                <div class="table-responsive">
+                    <table class="table table-bordered text-nowrap w-100">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Action</th>
+                                <th>Title</th>
+                                <th>Customer</th>
+                                <th>Lead/Project</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Work Type</th>
+                                <th>Staff</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td class="action-buttons">
+                                    <a href="#" class="text-info fs-14 lh-1" title="View">
+                                        <i class="ri-eye-line p-1"></i>
+                                    </a>
+                                    <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                        <i class="ri-delete-bin-5-line"></i>
+                                    </a>
+                                </td>
+                                <td>Follow-up Call with Client</td>
+                                <td>Acme Corp</td>
+                                <td>Residential Complex</td>
+                                <td>23 Sep 2025</td>
+                                <td>10:30 AM</td>
+                                <td>Lead Follow-up</td>
+                                <td>John Doe</td>
+                                <td>High</td>
+                                <td><span class="badge bg-warning text-dark">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td class="action-buttons">
+                                    <a href="#" class="text-info fs-14 lh-1" title="View">
+                                        <i class="ri-eye-line p-1"></i>
+                                    </a>
+                                    <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                        <i class="ri-delete-bin-5-line"></i>
+                                    </a>
+                                </td>
+                                <td>Site Inspection</td>
+                                <td>Globex Ltd</td>
+                                <td>Shopping Mall Renovation</td>
+                                <td>25 Sep 2025</td>
+                                <td>02:00 PM</td>
+                                <td>Mason</td>
+                                <td>Jane Smith</td>
+                                <td>Medium</td>
+                                <td><span class="badge bg-success">Completed</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td class="action-buttons">
+                                    <a href="#" class="text-info fs-14 lh-1" title="View">
+                                        <i class="ri-eye-line p-1"></i>
+                                    </a>
+                                    <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                        <i class="ri-delete-bin-5-line"></i>
+                                    </a>
+                                </td>
+                                <td>Plumbing Check</td>
+                                <td>Innotech Solutions</td>
+                                <td>Highway Expansion</td>
+                                <td>26 Sep 2025</td>
+                                <td>11:00 AM</td>
+                                <td>Plumbing</td>
+                                <td>Michael Johnson</td>
+                                <td>Urgent</td>
+                                <td><span class="badge bg-danger">Paused</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

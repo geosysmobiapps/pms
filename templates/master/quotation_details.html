@@ -1,0 +1,102 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0">Quotation #001 — Office Building Construction</h3>
+        <div>
+            <button class="btn btn-success me-2"><i class="ri-check-line"></i> Approve</button>
+            <button class="btn btn-danger me-2"><i class="ri-close-line"></i> Reject</button>
+            <button class="btn btn-primary" onclick="window.print();"><i class="ri-printer-line"></i> Print</button>
+        </div>
+    </div>
+
+    <!-- Quotation Info -->
+    <div class="card custom-card shadow-sm mb-4">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <p><strong>Lead / Customer:</strong> John Doe — Acme Corp</p>
+                    <p><strong>Status:</strong> <span class="badge bg-secondary">Draft</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Date:</strong> 01 Sep 2025</p>
+                    <p><strong>Valid Until:</strong> 30 Sep 2025</p>
+                </div>
+                <div class="col-md-4">
+                    <p><strong>Total Amount:</strong> ₹120,000</p>
+                    <p><strong>Prepared By:</strong> Sarah Lee</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category-wise Items -->
+    <div class="card custom-card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title mb-3">Quotation Items</h5>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Estimated Time</th>
+                            <th>Budget (₹)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Masonry</td>
+                            <td>Brick wall construction and foundation</td>
+                            <td>3 weeks</td>
+                            <td>50,000</td>
+                        </tr>
+                        <tr>
+                            <td>Plumbing</td>
+                            <td>Pipe installation and water connections</td>
+                            <td>1.5 weeks</td>
+                            <td>20,000</td>
+                        </tr>
+                        <tr>
+                            <td>Electrical</td>
+                            <td>Wiring, fittings, and lighting</td>
+                            <td>2 weeks</td>
+                            <td>15,000</td>
+                        </tr>
+                        <tr>
+                            <td>Painting</td>
+                            <td>Exterior and interior painting</td>
+                            <td>1 week</td>
+                            <td>35,000</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3" class="text-end">Grand Total</th>
+                            <th>₹120,000</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Notes / Remarks -->
+    <div class="card custom-card shadow-sm mb-4">
+        <div class="card-body">
+            <h5 class="card-title mb-3">Notes / Remarks</h5>
+            <p>Please ensure all materials meet the project specifications. Payment terms: 50% advance, 50% on completion.</p>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="d-flex justify-content-end mb-5">
+        <a href="" class="btn btn-secondary me-2"><i class="ri-arrow-left-line"></i> Back</a>
+        <button class="btn btn-success me-2"><i class="ri-check-line"></i> Approve</button>
+        <button class="btn btn-danger me-2"><i class="ri-close-line"></i> Reject</button>
+        <button class="btn btn-primary" onclick="window.print();"><i class="ri-printer-line"></i> Print</button>
+    </div>
+
+{% endblock %}

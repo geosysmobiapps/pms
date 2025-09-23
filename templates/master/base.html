@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="vertical" data-theme-mode="light" data-header-styles="light" data-menu-styles="light" data-toggled="close">
+
+<head>
+
+    <!-- Meta Data -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Chanakya </title>
+    <meta name="Description" content="Bootstrap Responsive Admin Web Dashboard HTML5 Template">
+    <meta name="Author" content="Spruko Technologies Private Limited">
+	<meta name="keywords" content="bootstrap template, dashboard, bootstrap admin dashboard, admin template, bootstrap 5 templates, admin, admin dashboard template, bootstrap dashboard, bootstrap admin template, template bootstrap 5, dashboard template bootstrap, admin dashboard ui, template admin, dashboard admin, dashboard template, bootstrap admin panel">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/LOGO.png" type="image/x-icon">
+    
+    <!-- Choices JS -->
+    <script src="/static/assets/libs/choices.js/public/assets/scripts/choices.min.js"></script>
+
+    <!-- Main Theme Js -->
+    <script src="/static/assets/js/main.js"></script>
+    
+    <!-- Bootstrap Css -->
+    <link id="style" href="/static/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet" >
+
+    <!-- Style Css -->
+    <link href="/static/assets/css/styles.css" rel="stylesheet" >
+
+    <!-- Icons Css -->
+    <link href="/static/assets/css/icons.css" rel="stylesheet" >
+
+    <!-- Node Waves Css -->
+    <link href="/static/assets/libs/node-waves/waves.min.css" rel="stylesheet" > 
+
+    <!-- Simplebar Css -->
+    <link href="/static/assets/libs/simplebar/simplebar.min.css" rel="stylesheet" >
+    
+    <!-- Color Picker Css -->
+    <link rel="stylesheet" href="/static/assets/libs/flatpickr/flatpickr.min.css">
+    <link rel="stylesheet" href="/static/assets/libs/@simonwep/pickr/themes/nano.min.css">
+
+    <!-- Choices Css -->
+    <link rel="stylesheet" href="/static/assets/libs/choices.js/public/assets/styles/choices.min.css">
+
+    <!-- FlatPickr CSS -->
+    <link rel="stylesheet" href="/static/assets/libs/flatpickr/flatpickr.min.css">
+
+    <!-- Auto Complete CSS -->
+    <link rel="stylesheet" href="/static/assets/libs/@tarekraafat/autocomplete.js/css/autoComplete.css">
+
+    <!-- My styles -->
+    <link rel="stylesheet" href="/static/styles/base.css">
+    <link rel="stylesheet" href="/static/styles/style.css">
+
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+    <!-- Loader -->
+    <div id="loader" >
+        <img src="/static/assets/images/media/loader.svg" alt="">
+    </div>
+    <!-- Loader -->
+
+    <div class="page bg-bl bg-xlight">
+
+        <!-- app-header -->
+        <header class="app-header sticky" id="header" style="box-shadow: 0 0px 8px var(--light-yellow);">
+
+            <!-- Start::main-header-container -->
+            <div class="main-header-container container-fluid">
+
+                <!-- Start::header-content-left -->
+                <div class="header-content-left">
+
+                    <!-- Start::header-element -->
+                    <div class="header-element">
+                        <div class="horizontal-logo">
+                            <a href="index.html" class="header-logo">
+                                <img src="/static/logo/logo.png" alt="logo" class="desktop-logo">
+                                <img src="/static/logo/logo.png" alt="logo" class="toggle-logo">
+                                <img src="/static/logo/logo.png" alt="logo" class="desktop-dark">
+                                <img src="/static/logo/logo.png" alt="logo" class="toggle-dark">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- End::header-element -->
+
+                    <!-- Start::header-element -->
+                    <div class="header-element mx-lg-0 mx-2">
+                        <a aria-label="Hide Sidebar" class="sidemenu-toggle header-link" data-bs-toggle="sidebar" href="javascript:void(0);">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon menu-btn" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5h12M4 12h16M4 19h8" color="currentColor"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="header-link-icon menu-btn-close" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m18 6l-6 6m0 0l-6 6m6-6l6 6m-6-6L6 6" color="currentColor"/></svg>
+                        </a>
+                    </div>
+                    <!-- End::header-element -->
+
+           
+                </div>
+                <!-- End::header-content-left -->
+
+                <!-- Start::header-content-right -->
+                <ul class="header-content-right">
+
+
+                    <!-- Start::header-element -->
+                    <li class="header-element header-theme-mode">
+                        <a href="{% url 'accounts:login' %}" class="header-link">
+                            <!-- Start::header-link-icon -->
+                            <i class="bi bi-box-arrow-right header-link-icon fs-4 text-bd"></i>
+                            <!-- End::header-link-icon -->
+                        </a>  
+                    </li>
+                    <!-- End::header-element -->
+
+                </ul>
+                <!-- End::header-content-right -->
+
+            </div>
+            <!-- End::main-header-container -->
+
+        </header>
+        <!-- /app-header -->
+
+        {% include "master/sidebar.html" %}
+
+            <!-- Start::app-content -->
+        <div class="main-content app-content pt-3">
+            <div class="container-fluid">
+
+                {% block content %} {% endblock content %}
+
+            </div>
+        </div>
+
+
+    </div>
+
+ <!-- Footer Start -->
+        <footer class="footer mt-auto py-3 bg-white text-center">
+            <div class="container">
+                <span class="text-muted"> Copyright &copy; <span id="year"></span> <a
+                        href="javascript:void(0);" class="text-dark fw-medium">Projo</a>.
+                   Powered by <a  href="https://geosysitsolutions.com/" target="_blank">
+                        <span class="fw-medium text-primary">GEOSYS IT SOLUTIONS PVT LTD.</span>
+                    </a> All
+                    rights
+                    reserved
+                </span>
+            </div>
+        </footer>
+        <!-- Footer End -->
+
+    <div id="responsive-overlay"></div>
+    <!-- Scroll To Top -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="/static/assets/libs/@popperjs/core/umd/popper.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="/static/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Defaultmenu JS -->
+    <script src="/static/assets/js/defaultmenu.min.js"></script>
+
+    <!-- Node Waves JS-->
+    <script src="/static/assets/libs/node-waves/waves.min.js"></script>
+
+    <!-- Sticky JS -->
+    <script src="/static/assets/js/sticky.js"></script>
+
+    <!-- Simplebar JS -->
+    <script src="/static/assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="/static/assets/js/simplebar.js"></script>
+
+    <!-- Auto Complete JS -->
+    <script src="/static/assets/libs/@tarekraafat/autocomplete.js/autoComplete.min.js"></script>
+
+    <!-- Color Picker JS -->
+    <script src="/static/assets/libs/@simonwep/pickr/pickr.es5.min.js"></script>
+
+    <!-- Date & Time Picker JS -->
+    <script src="/static/assets/libs/flatpickr/flatpickr.min.js"></script>
+
+
+    <!-- Apex Charts JS -->
+    <script src="/static/assets/libs/apexcharts/apexcharts.min.js"></script>
+
+    <!-- Sales Dashboard --> 
+    <script src="/static/assets/js/sales-dashboard.js"></script>
+
+    <!-- Vanilla-Wizard JS -->
+    <script src="/static/assets/libs/vanilla-wizard/js/wizard.min.js"></script>
+
+    <!-- Internal Form Wizard JS -->
+    <script src="/static/assets/js/form-wizard.js"></script>
+    <script src="/static/assets/js/form-wizard-init.js"></script>
+
+    <!-- Custom JS -->
+    <script src="/static/assets/js/custom.js"></script>
+
+        <!-- Datatables Cdn -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.6/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Custom-Switcher JS -->
+    <script src="/static/assets/js/custom-switcher.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <script src="/static/assets/js/select2.js"></script>
+
+    <script src="/static/assets/js/datatables.js"></script>
+
+
+    {% block script %} {% endblock script %}
+    
+
+</body>
+
+</html> 

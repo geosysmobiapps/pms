@@ -1,0 +1,180 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card custom-card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Add New Member</h5>
+                    <form>
+                        <div class="row">
+                            <!-- Full Name -->
+                            <div class="col-md-6 mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Enter name" required>
+                            </div>
+
+                            <!-- Full Name -->
+                            <div class="col-md-6 mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" required>
+                            </div>
+                            
+                            <!-- Email -->
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" required>
+                            </div>
+
+                            <!-- Phone -->
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" required>
+                            </div>
+
+                            <!-- Role -->
+                            <div class="col-md-6 mb-3">
+                                <label for="role" class="form-label">Role</label>
+                                <select class="form-select" id="role" name="role" required>
+                                    <option value="">-- Select Role --</option>
+                                    <option value="manager">Manager</option>
+                                    <option value="team_head">Team Head</option>
+                                    <option value="staff">Staff</option>
+                                </select>
+                            </div>
+
+                            <!-- Team -->
+                            <div class="col-md-6 mb-3">
+                                <label for="team" class="form-label">Team</label>
+                                <select class="form-select" id="team" name="team" required>
+                                    <option value="">-- Select Team --</option>
+                                    <option value="masonry">Masonry</option>
+                                    <option value="interior">Interior Design</option>
+                                    <option value="planning">Planning</option>
+                                    <option value="painting">Painting</option>
+                                    <option value="electrical">Electrical</option>
+                                    <option value="plumbing">Plumbing</option>
+                                </select>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="col-md-6 mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password" required>
+                            </div>
+
+                            <!-- Status -->
+                            <div class="col-md-6 mb-3">
+                                <label for="status" class="form-label">Status</label>
+                                <select class="form-select" id="status" name="status" required>
+                                    <option value="">-- Select Status --</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="d-flex mt-3">
+                            <button type="reset" class="btn btn-secondary me-2">
+                                <i class="ri-close-circle-line"></i> Cancel
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="ri-check-line"></i> Save
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card custom-card shadow-sm h100 mb-4">
+                <div class="card-body">
+                    
+                    <h5 class="card-title">Team Members</h5>
+
+                    <div class="row">
+                        <!-- Role -->
+                        <div class="col-md-6 mt-2">
+                            <select class="form-select" id="role" name="role" required>
+                                <option value="">-- Select Role --</option>
+                                <option value="manager">Manager</option>
+                                <option value="team_head">Team Head</option>
+                                <option value="staff">Staff</option>
+                            </select>
+                        </div>
+
+                        <!-- Team -->
+                        <div class="col-md-6 mt-2">
+                            <select class="form-select" id="team" name="team" required>
+                                <option value="">-- Select Team --</option>
+                                <option value="masonry">Masonry</option>
+                                <option value="interior">Interior Design</option>
+                                <option value="planning">Planning</option>
+                                <option value="painting">Painting</option>
+                                <option value="electrical">Electrical</option>
+                                <option value="plumbing">Plumbing</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <!-- Member 1 -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>John Smith</strong><br>
+                                <small class="text-muted">Role: Team Head - Masonry</small><br>
+                                <small class="text-muted">Email: john@example.com | Phone: +91 9876543210</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+
+                        <!-- Member 2 -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Sarah Lee</strong><br>
+                                <small class="text-muted">Role: Designer - Interior Design</small><br>
+                                <small class="text-muted">Email: sarah@example.com | Phone: +91 9123456789</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+
+                        <!-- Member 3 -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Raj Kumar</strong><br>
+                                <small class="text-muted">Role: Planning Staff - Planning</small><br>
+                                <small class="text-muted">Email: raj@example.com | Phone: +91 9988776655</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+
+                        <!-- Member 4 -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Emily Brown</strong><br>
+                                <small class="text-muted">Role: Painter - Painting</small><br>
+                                <small class="text-muted">Email: emily@example.com | Phone: +91 9090909090</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

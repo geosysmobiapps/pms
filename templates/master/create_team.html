@@ -1,0 +1,141 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0">Create New Department / Team</h3>
+        <a href="" class="btn btn-secondary">
+            <i class="ri-arrow-left-line"></i> Back to List
+        </a>
+    </div>
+
+    <!-- Create Department Form -->
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card custom-card shadow-sm mb-4">
+                <div class="card-body">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <!-- Department Name -->
+                            <div class="col-md-6">
+                                <label class="form-label">Department / Team Name</label>
+                                <input type="text" name="name" class="form-control" placeholder="Enter department name" required>
+                            </div>
+
+                            <!-- Department Head -->
+                            <div class="col-md-6">
+                                <label class="form-label">Team Head</label>
+                                <select name="head" class="form-select" required>
+                                    <option value="">-- Select Staff --</option>
+                                    {% for staff in staff_list %}
+                                        <option value="{{ staff.id }}">{{ staff.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="col-md-12">
+                                <label class="form-label">Description</label>
+                                <textarea name="description" class="form-control" rows="3" placeholder="Optional description"></textarea>
+                            </div>
+
+                        </div>
+
+                        <!-- Form Actions -->
+                        <div class="mt-4">
+                            <button type="reset" class="btn btn-secondary me-2"><i class="ri-arrow-left-line"></i> Back</button>
+                            <button type="submit" class="btn btn-primary"><i class="ri-save-line"></i> Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card custom-card shadow-sm mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">My Teams</h5>
+                    <ul class="list-group list-group-flush">
+                        <!-- Masonry -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Masonry</strong><br>
+                                <small class="text-muted">Head: John Doe</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-pill me-2">12 Members</span>
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+                        <!-- Interior Design -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Interior Design</strong><br>
+                                <small class="text-muted">Head: Sarah Lee</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-pill me-2">8 Members</span>
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+                        <!-- Planning -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Planning</strong><br>
+                                <small class="text-muted">Head: Raj Kumar</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-pill me-2">6 Members</span>
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+                        <!-- Painting -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Painting</strong><br>
+                                <small class="text-muted">Head: Emily Brown</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-pill me-2">10 Members</span>
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+                        <!-- Electrical -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Electrical</strong><br>
+                                <small class="text-muted">Head: Ahmed Khan</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-pill me-2">7 Members</span>
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+                        <!-- Plumbing -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>Plumbing</strong><br>
+                                <small class="text-muted">Head: Maria Garcia</small>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="badge bg-primary rounded-pill me-2">9 Members</span>
+                                <a href="#" class="text-info me-2" title="Edit"><i class="ri-edit-line"></i></a>
+                                <a href="#" class="text-danger" title="Delete"><i class="ri-delete-bin-line"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+
+{% endblock %}
