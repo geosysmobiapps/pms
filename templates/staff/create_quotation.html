@@ -1,0 +1,117 @@
+{% extends "master/base.html" %}
+
+{% block content %}
+
+<!-- Create Quotation Form -->
+<div class="col-md-12">
+    <div class="card custom-card shadow-sm mb-4">
+        <div class="card-header bg-light d-flex justify-content-between">
+            <h6 class="mb-0">Create New Quotation</h6>
+        </div>
+        <div class="card-body">
+            <form>
+                <!-- Quotation Info -->
+                <div class="row g-3">
+                    <!-- Lead Selection -->
+                    <div class="col-md-4">
+                        <label class="form-label">Lead</label>
+                        <select class="form-select" required>
+                            <option value="">Select Lead</option>
+                            <option>John Doe - Acme Corp</option>
+                            <option>Jane Smith - Globex Ltd</option>
+                            <option>Michael Johnson - Innotech Solutions</option>
+                            <option>Emily Davis - FutureSoft</option>
+                        </select>
+                    </div>
+
+                    <!-- Quotation Number -->
+                    <div class="col-md-4">
+                        <label class="form-label">Quotation Number</label>
+                        <input type="text" class="form-control" placeholder="Enter quotation number" required>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="col-md-4">
+                        <label class="form-label">Quotation Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+
+                    <!-- Quotation Items -->
+                    <div class="col-md-12">
+                        <label class="form-label">Quotation Items</label>
+                        <table class="table table-bordered mb-3">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Description</th>
+                                    <th>Quantity</th>
+                                    <th>Rate (₹)</th>
+                                    <th>Amount (₹)</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody id="quotation-items">
+                                <tr>
+                                    <td><input type="text" class="form-control" placeholder="Item Name" required></td>
+                                    <td><input type="text" class="form-control" placeholder="Description"></td>
+                                    <td><input type="number" class="form-control" min="1" value="1" required></td>
+                                    <td><input type="number" class="form-control" min="0" value="0" required></td>
+                                    <td><input type="number" class="form-control" value="0" readonly></td>
+                                    <td><button type="button" class="btn btn-sm btn-danger remove-item">X</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-sm btn-outline-primary" id="add-item">+ Add Item</button>
+                    </div>
+
+                    <!-- Totals -->
+                    <div class="col-md-4">
+                        <label class="form-label">Subtotal (₹)</label>
+                        <input type="number" class="form-control" value="0" readonly>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Taxes (₹)</label>
+                        <input type="number" class="form-control" value="0">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Total (₹)</label>
+                        <input type="number" class="form-control" value="0" readonly>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="col-md-12">
+                        <label class="form-label">Notes</label>
+                        <textarea class="form-control" rows="3" placeholder="Additional notes or terms"></textarea>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Create Quotation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JS to add/remove items -->
+<script>
+    document.getElementById('add-item').addEventListener('click', function() {
+        const tbody = document.getElementById('quotation-items');
+        const row = tbody.rows[0].cloneNode(true);
+        row.querySelectorAll('input').forEach(input => {
+            if(input.hasAttribute('readonly')) input.value = 0;
+            else input.value = '';
+        });
+        tbody.appendChild(row);
+    });
+
+    document.getElementById('quotation-items').addEventListener('click', function(e) {
+        if(e.target.classList.contains('remove-item')){
+            const row = e.target.closest('tr');
+            if(this.rows.length > 1) row.remove();
+        }
+    });
+</script>
+
+{% endblock content %}

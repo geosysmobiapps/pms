@@ -1,0 +1,146 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="mb-0">Create Quotation</h3>
+        <button class="btn btn-primary" onclick="window.print();"><i class="ri-printer-line"></i> Print</button>
+    </div>
+
+    <form>
+        <!-- Quotation Info -->
+        <div class="card custom-card shadow-sm mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Customer</label>
+                        <select class="form-select" required>
+                            <option value="">-- Select Lead / Customer --</option>
+                            <option>Acme Corp</option>
+                            <option>Globex Ltd</option>
+                            <option>Innotech</option>
+                            <option>TechWorld</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Lead</label>
+                        <select class="form-select" required>
+                            <option value="">-- Select Project --</option>
+                            <option>Office Building Construction</option>
+                            <option>Residential Complex</option>
+                            <option>Shopping Mall Renovation</option>
+                            <option>Highway Expansion</option>
+                            <option>Bridge Construction</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Total Amount (₹)</label>
+                        <input type="number" class="form-control" placeholder="0" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Quotation Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Valid Until</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Prepared By</label>
+                        <select class="form-select" required>
+                            <option value="">-- Select Staff --</option>
+                            <option>John Doe</option>
+                            <option>Sarah Lee</option>
+                            <option>Raj Kumar</option>
+                            <option>Emily Brown</option>
+                            <option>Ahmed Khan</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category-wise Items -->
+        <div class="card custom-card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Quotation Items</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Estimated Time</th>
+                                <th>Budget (₹)</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="quotation-items">
+                            <tr>
+                                <td>
+                                    <select class="form-select" required>
+                                        <option value="">-- Select Category --</option>
+                                        <option>Masonry</option>
+                                        <option>Plumbing</option>
+                                        <option>Electrical</option>
+                                        <option>Painting</option>
+                                    </select>
+                                </td>
+                                <td><input type="text" class="form-control" placeholder="Item description" required></td>
+                                <td><input type="text" class="form-control" placeholder="E.g., 2 weeks" required></td>
+                                <td><input type="number" class="form-control" placeholder="0" required></td>
+                                <td><button type="button" class="btn btn-danger btn-sm remove-item"><i class="ri-delete-bin-line"></i></button></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5">
+                                    <button type="button" class="btn btn-success btn-sm" id="add-item"><i class="ri-add-line"></i> Add Item</button>
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes / Remarks -->
+        <div class="card custom-card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title mb-3">Notes / Remarks</h5>
+                <textarea class="form-control" rows="3" placeholder="Add any notes or remarks for this quotation"></textarea>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="d-flex justify-content-end mb-5">
+            <a href="{% url 'master:quotation-list' %}" class="btn btn-secondary me-2"><i class="ri-arrow-left-line"></i> Back</a>
+            <button type="button" class="btn btn-primary me-2"><i class="ri-printer-line"></i> Save</button>
+        </div>
+    </form>
+
+{% endblock %}
+{% block script %}
+
+    <!-- Optional JS for adding/removing items -->
+    <script>
+        document.getElementById('add-item').addEventListener('click', function(){
+            const tbody = document.getElementById('quotation-items');
+            const row = tbody.rows[0].cloneNode(true);
+            row.querySelectorAll('input').forEach(input => input.value = '');
+            row.querySelector('select').selectedIndex = 0;
+            tbody.appendChild(row);
+        });
+
+        document.addEventListener('click', function(e){
+            if(e.target && e.target.classList.contains('remove-item')){
+                const row = e.target.closest('tr');
+                const tbody = document.getElementById('quotation-items');
+                if(tbody.rows.length > 1){
+                    row.remove();
+                }
+            }
+        });
+    </script>
+
+{% endblock %}

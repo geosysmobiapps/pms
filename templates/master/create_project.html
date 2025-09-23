@@ -1,0 +1,68 @@
+{% extends "master/base.html" %}
+
+{% block content %}
+
+<!-- Create Project Form -->
+    <div class="col-md-12">
+        <div class="card custom-card shadow-sm mb-4">
+            <div class="card-header bg-light d-flex justify-content-between">
+                <h6 class="mb-0">Create New Project</h6>
+            </div>
+            <div class="card-body">
+                <form>
+                    <!-- Project Info -->
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Project Name</label>
+                            <input type="text" class="form-control" placeholder="Enter project name" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" required>
+                                <option value="">Select category</option>
+                                <option>Residential</option>
+                                <option>Commercial</option>
+                                <option>Infrastructure</option>
+                                <option>Renovation</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">Priority</label>
+                            <select class="form-select">
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="form-label">Estimated Budget (₹)</label>
+                            <input type="number" class="form-control" placeholder="Enter budget" required>
+                        </div>
+                
+                        <!-- Schedule -->
+                        <div class="col-md-4">
+                            <label class="form-label">Start Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">End Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" placeholder="Brief project description"></textarea>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Create Project</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

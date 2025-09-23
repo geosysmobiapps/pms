@@ -1,0 +1,149 @@
+<!-- Start::app-sidebar -->
+<aside class="app-sidebar sticky bg-bd" id="sidebar">
+
+    <!-- Start::main-sidebar-header -->
+    <div class="main-sidebar-header border-0 bg-primary" style="box-shadow: -8px 0px 8px var(--light-yellow);">
+        <a href="index.html" class="header-logo">
+            <img src="/static/logo/logo.png" alt="logo" class="logo desktop-logo">
+            <img src="/static/logo/logo.png" alt="logo" class="logo toggle-dark">
+            <img src="/static/logo/logo.png" alt="logo" class="logo desktop-dark">
+            <img src="/static/logo/logo.png" alt="logo" class="logo toggle-logo">
+        </a>
+    </div>
+    <!-- End::main-sidebar-header -->
+
+    <!-- Start::main-sidebar -->
+    <div class="main-sidebar" id="sidebar-scroll">
+
+        <!-- Start::nav -->
+<nav class="main-menu-container nav nav-pills flex-column sub-open">
+    <div class="slide-left" id="slide-left">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+        </svg>
+    </div>
+
+    <ul class="main-menu">
+
+        <!-- Dashboard -->
+        <li class="slide mb-2 mt-3">
+            <a href="{% url "master:dashboard" %}" class="side-menu__item">
+                <i class="ri-dashboard-line side-menu__icon"></i>
+                <span class="side-menu__label">Dashboard</span>
+            </a>
+        </li>
+
+        <!-- Lead Management -->
+        <li class="slide has-sub mb-2">
+            <a href="javascript:void(0);" class="side-menu__item">
+                <i class="ri-user-3-line side-menu__icon"></i>
+                <span class="side-menu__label">Customers</span>
+                <i class="ri-arrow-down-s-line side-menu__angle"></i>
+            </a>
+            <ul class="slide-menu child1">
+                <li class="slide"><a href="{% url "master:create-customer" %}" class="side-menu__item">New Customer</a></li>
+                <li class="slide"><a href="{% url "master:customer-list" %}" class="side-menu__item">View Customers</a></li>
+            </ul>
+        </li>
+
+        <!-- Lead Management -->
+        <li class="slide has-sub mb-2">
+            <a href="javascript:void(0);" class="side-menu__item">
+                <i class="ri-user-follow-line side-menu__icon"></i>
+                <span class="side-menu__label">Leads</span>
+                <i class="ri-arrow-down-s-line side-menu__angle"></i>
+            </a>
+            <ul class="slide-menu child1">
+                <li class="slide"><a href="{% url "master:create-lead" %}" class="side-menu__item">New Lead</a></li>
+                <li class="slide"><a href="{% url "master:lead-list" %}" class="side-menu__item">View Leads</a></li>
+                <li class="slide"><a href="{% url "master:quotation-list" %}" class="side-menu__item">Quotations</a></li>
+            </ul>
+        </li>
+
+        <!-- Projects -->
+        <li class="slide has-sub mb-2">
+            <a href="javascript:void(0);" class="side-menu__item">
+                <i class="ri-folder-line side-menu__icon"></i>
+                <span class="side-menu__label">Projects</span>
+                <i class="ri-arrow-down-s-line side-menu__angle"></i>
+            </a>
+            <ul class="slide-menu child1">
+                <li class="slide"><a href="{% url "master:create-project" %}" class="side-menu__item">New Project</a></li>
+                <li class="slide"><a href="{% url "master:project-list" %}" class="side-menu__item">View Projects</a></li>
+                {% comment %} <li class="slide"><a href="#" class="side-menu__item">Project Categories</a></li> {% endcomment %}
+            </ul>
+        </li>
+
+        <!-- Schedules -->
+        <li class="slide has-sub mb-2">
+            <a href="javascript:void(0);" class="side-menu__item">
+                <i class="ri-calendar-line side-menu__icon"></i>
+                <span class="side-menu__label">Schedules</span>
+                <i class="ri-arrow-down-s-line side-menu__angle"></i>
+            </a>
+            <ul class="slide-menu child1">
+                <li class="slide">
+                    <a href="{% url "master:create-schedule" %}" class="side-menu__item">New Schedule</a>
+                </li>
+                <li class="slide">
+                    <a href="{% url "master:schedule-list" %}" class="side-menu__item">View Schedules</a>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Teams -->
+        <li class="slide has-sub mb-2">
+            <a href="javascript:void(0);" class="side-menu__item">
+                <i class="ri-team-line side-menu__icon"></i>
+                <span class="side-menu__label">My Team</span>
+                <i class="ri-arrow-down-s-line side-menu__angle"></i>
+            </a>
+            <ul class="slide-menu child1">
+                <li class="slide"><a href="{% url "master:create-member" %}" class="side-menu__item">New Member</a></li>
+                <li class="slide"><a href="{% url "master:create-team" %}" class="side-menu__item">View Teams</a></li>
+            </ul>
+        </li>
+
+        <!-- Reports -->
+        <li class="slide has-sub mb-2">
+            <a href="javascript:void(0);" class="side-menu__item">
+                <i class="ri-bar-chart-2-line side-menu__icon"></i>
+                <span class="side-menu__label">Reports</span>
+                <i class="ri-arrow-down-s-line side-menu__angle"></i>
+            </a>
+            <ul class="slide-menu child1">
+                <li class="slide"><a href="{% url "master:project-report" %}" class="side-menu__item">Project Reports</a></li>
+                <li class="slide"><a href="#" class="side-menu__item">Task Reports</a></li>
+                <li class="slide"><a href="#" class="side-menu__item">Team Performance</a></li>
+            </ul>
+        </li>
+
+        <!-- Settings -->
+        <li class="slide has-sub mb-2">
+            <a href="javascript:void(0);" class="side-menu__item">
+                <i class="ri-settings-3-line side-menu__icon"></i>
+                <span class="side-menu__label">Settings</span>
+                <i class="ri-arrow-down-s-line side-menu__angle"></i>
+            </a>
+            <ul class="slide-menu child1">
+                <li class="slide"><a href="{% url "master:profile-settings" %}" class="side-menu__item">Profile</a></li>
+                <li class="slide"><a href="{% url "master:support" %}" class="side-menu__item">Support</a></li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <div class="slide-right" id="slide-right">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+        </svg>
+    </div>
+</nav>
+<!-- End::nav -->
+
+
+    </div>
+    <!-- End::main-sidebar -->
+
+</aside>
+<!-- End::app-sidebar -->

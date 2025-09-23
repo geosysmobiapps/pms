@@ -23,10 +23,10 @@
         <div class="login-card">
             <!-- ✅ MOBILE LOGO -->
             <div class="mobile-logo text-center">
-                <img src="{% static 'images/LOGO.png' %}" alt="logo" class="logo">
+                <img src="{% static 'logo/logo.png' %}" alt="logo" class="logo">
             </div>
 
-            <h3>Sign In</h3>
+            <h3 class="text-center text-light">Sign In</h3>
             <form method="post" action="">
                 {% csrf_token %}
                 <div class="mb-3">
@@ -40,7 +40,7 @@
 
                 <div class="mb-3">
                     <label class="form-label text-white">Username</label>
-                    <input type="number" class="form-control {% if auth_error %}is-invalid{% endif %}"
+                    <input type="text" class="form-control {% if auth_error %}is-invalid{% endif %}"
                            name="username" placeholder="Enter username" required>
                     {% if auth_error %}
                         <div class="invalid-feedback">Invalid username or password</div>
@@ -66,7 +66,7 @@
                     </div>
                     <button type="button" class="btn refreshCaptcha" style="background-color: #4B164C;"
                             onclick="refreshDemoCaptcha()"><i class="bi bi-arrow-clockwise" style="color: white;"></i></button>
-                    <input type="text" class="form-control" name="captcha" required placeholder="Enter captcha">
+                    <input type="text" class="form-control" name="captcha" placeholder="Enter captcha">
                 </div>
 
                 <button type="submit" class="btn btn-login mt-2">Submit</button>
@@ -81,11 +81,11 @@
     <div class="right-section">
         <div class="right-inner">
             <!-- ✅ DESKTOP LOGO IMAGE -->
-            <img src="{% static 'images/LOGO.png' %}" alt="Right Logo" class="right-image">
+            <img src="{% static 'logo/logo.png' %}" alt="Right Logo" class="right-image">
             <div class="right-text">
                 <h2>Project Management System</h2>
                 <p>
-                    PMS is a powerful platform designed to streamline your workflow,
+                    PROJO is a powerful platform designed to streamline your workflow,
                     manage teams efficiently, and track progress in real time.
                 </p>
                

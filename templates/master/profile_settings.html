@@ -1,0 +1,79 @@
+{% extends "master/base.html" %}
+{% block content %}
+
+    <div class="card custom-card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Add Company Profile</h5>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row">
+                    <!-- Company Info -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Company Name</label>
+                        <input type="text" class="form-control" placeholder="Enter company name" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Tagline</label>
+                        <input type="text" class="form-control" placeholder="Enter tagline">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Founded Year</label>
+                        <input type="number" class="form-control" placeholder="e.g. 2012">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Number of Employees</label>
+                        <input type="number" class="form-control" placeholder="e.g. 100">
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" placeholder="company@example.com" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Phone</label>
+                        <input type="text" class="form-control" placeholder="+91 98765 43210">
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Website</label>
+                        <input type="url" class="form-control" placeholder="https://www.company.com">
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">GST Number</label>
+                        <input type="text" class="form-control" placeholder="GSTIN">
+                    </div>
+
+                    <!-- Logo Upload -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Company Logo</label>
+                        <input type="file" class="form-control">
+                    </div>
+
+                    <!-- Address -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">Address</label>
+                        <textarea class="form-control" rows="4" placeholder="Enter company address"></textarea>
+                    </div>
+
+                    <!-- About -->
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label">About Company</label>
+                        <textarea class="form-control" rows="4" placeholder="Write a brief description about the company"></textarea>
+                    </div>
+
+                </div>
+
+                <!-- Buttons -->
+                <div class="d-flex mt-5">
+                    <button type="reset" class="btn btn-secondary me-2">Reset</button>
+                    <button type="submit" class="btn btn-primary">Save Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

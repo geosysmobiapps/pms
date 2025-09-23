@@ -1,0 +1,166 @@
+{% extends "master/base.html" %}
+
+{% block content %}
+
+    <!-- Project List Table -->
+    <div class="row mt-4">
+        <div class="col-xl-12">
+            <div class="card custom-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <div class="card-title">All Projects</div>
+                    <button class="btn btn-sm btn-primary">
+                        <i class="bi bi-plus-circle me-1"></i> Add Project
+                    </button>
+                </div>
+                <div class="card-body">
+                    <!-- Export Buttons -->
+                    <a href="#" class="btn btn-success me-2" target="_blank">
+                        <i class="ri-file-excel-2-line"></i> Export Excel
+                    </a>
+                    <a href="#" class="btn btn-danger" target="_blank">
+                        <i class="ri-file-pdf-line"></i> Export PDF
+                    </a>
+
+                    <!-- Table -->
+                    <div class="table-responsive mt-3">
+                        <table id="scroll-vertical" class="table table-bordered text-nowrap w-100">
+                            <thead class="tableth">
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Action</th>
+                                    <th>Project</th>
+                                    <th>Manager</th>
+                                    <th>Start Date</th>
+                                    <th>End Date</th>
+                                    <th>Budget</th>
+                                    <th>Expense</th>
+                                    <th>Change</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="action-buttons">
+                                        <a href="{% url 'master:project-details' %}" class="text-info fs-14 lh-1" title="View">
+                                            <i class="ri-eye-line p-1"></i>
+                                        </a>
+                                        <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                            <i class="ri-delete-bin-5-line"></i>
+                                        </a>
+                                    </td>
+                                    <td>Residential Complex</td>
+                                    <td>John Doe</td>
+                                    <td>01 Jan 2025</td>
+                                    <td>31 Dec 2025</td>
+                                    <td class="text-end">₹850K</td>
+                                    <td class="text-end">₹820K</td>
+                                    <td class="text-success">+₹30K</td>
+                                    <td><span class="badge bg-success">On Track</span></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="action-buttons">
+                                        <a href="/projects/2" class="text-info fs-14 lh-1" title="View">
+                                            <i class="ri-eye-line p-1"></i>
+                                        </a>
+                                        <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                            <i class="ri-delete-bin-5-line"></i>
+                                        </a>
+                                    </td>
+                                    <td>Shopping Mall Renovation</td>
+                                    <td>Sarah Lee</td>
+                                    <td>01 Feb 2025</td>
+                                    <td>30 Nov 2025</td>
+                                    <td class="text-end">₹1.2M</td>
+                                    <td class="text-end">₹1.25M</td>
+                                    <td class="text-danger">-₹50K</td>
+                                    <td><span class="badge bg-danger">Over Budget</span></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="action-buttons">
+                                        <a href="/projects/3" class="text-info fs-14 lh-1" title="View">
+                                            <i class="ri-eye-line p-1"></i>
+                                        </a>
+                                        <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                            <i class="ri-delete-bin-5-line"></i>
+                                        </a>
+                                    </td>
+                                    <td>Highway Expansion</td>
+                                    <td>Raj Kumar</td>
+                                    <td>15 Mar 2025</td>
+                                    <td>31 Dec 2025</td>
+                                    <td class="text-end">₹620K</td>
+                                    <td class="text-end">₹600K</td>
+                                    <td class="text-success">+₹20K</td>
+                                    <td><span class="badge bg-warning text-dark">In Progress</span></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td class="action-buttons">
+                                        <a href="/projects/4" class="text-info fs-14 lh-1" title="View">
+                                            <i class="ri-eye-line p-1"></i>
+                                        </a>
+                                        <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                            <i class="ri-delete-bin-5-line"></i>
+                                        </a>
+                                    </td>
+                                    <td>Office Building Construction</td>
+                                    <td>Emily Brown</td>
+                                    <td>01 Apr 2025</td>
+                                    <td>31 Oct 2025</td>
+                                    <td class="text-end">₹430K</td>
+                                    <td class="text-end">₹450K</td>
+                                    <td class="text-danger">-₹20K</td>
+                                    <td><span class="badge bg-secondary">Pending</span></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td class="action-buttons">
+                                        <a href="/projects/5" class="text-info fs-14 lh-1" title="View">
+                                            <i class="ri-eye-line p-1"></i>
+                                        </a>
+                                        <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                            <i class="ri-delete-bin-5-line"></i>
+                                        </a>
+                                    </td>
+                                    <td>Hospital Extension</td>
+                                    <td>Ahmed Khan</td>
+                                    <td>01 May 2025</td>
+                                    <td>31 Dec 2025</td>
+                                    <td class="text-end">₹780K</td>
+                                    <td class="text-end">₹750K</td>
+                                    <td class="text-success">+₹30K</td>
+                                    <td><span class="badge bg-success">On Track</span></td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td class="action-buttons">
+                                        <a href="/projects/6" class="text-info fs-14 lh-1" title="View">
+                                            <i class="ri-eye-line p-1"></i>
+                                        </a>
+                                        <a href="#" class="text-danger fs-14 lh-1" title="Delete">
+                                            <i class="ri-delete-bin-5-line"></i>
+                                        </a>
+                                    </td>
+                                    <td>Bridge Construction</td>
+                                    <td>Maria Garcia</td>
+                                    <td>10 Jun 2025</td>
+                                    <td>30 Apr 2026</td>
+                                    <td class="text-end">₹550K</td>
+                                    <td class="text-end">₹570K</td>
+                                    <td class="text-danger">-₹20K</td>
+                                    <td><span class="badge bg-warning text-dark">In Progress</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock content %}

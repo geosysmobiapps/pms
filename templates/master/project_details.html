@@ -1,0 +1,210 @@
+{% extends "master/base.html" %}
+
+{% block content %}
+
+    <!-- Project Overview -->
+    <div class="card custom-card mb-4 shadow-sm border-0">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><strong>Residential Complex</strong></h5>
+        </div>
+        <div class="card-body row">
+            <div class="col-md-6">
+                {% comment %} <p><strong>Project Manager:</strong> John Doe</p> {% endcomment %}
+                <p><strong>Start Date:</strong> Jan 1, 2025</p>
+                <p><strong>End Date:</strong> Dec 31, 2025</p>
+                <p><strong>Status:</strong> <span class="badge bg-success">On Track</span></p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Total Budget:</strong> ₹1,200,000</p>
+                <p><strong>Current Expense:</strong> ₹950,000</p>
+                <p><strong>Remaining:</strong> ₹250,000</p>
+                <p><strong>Change:</strong> <span class="text-success">+₹30,000</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Category-wise Breakdown -->
+    <div class="card custom-card mb-4 shadow-sm border-0">
+        <div class="card-header bg-light d-flex justify-content-between">
+            <h6 class="mb-0">Category-wise Budget vs Expense</h6>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Category</th>
+                            <th>Budget</th>
+                            <th>Expense</th>
+                            <th>Change</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Materials</td>
+                            <td>₹500K</td>
+                            <td>₹480K</td>
+                            <td class="text-success">+₹20K</td>
+                        </tr>
+                        <tr>
+                            <td>Labor</td>
+                            <td>₹400K</td>
+                            <td>₹420K</td>
+                            <td class="text-danger">-₹20K</td>
+                        </tr>
+                        <tr>
+                            <td>Equipment</td>
+                            <td>₹200K</td>
+                            <td>₹180K</td>
+                            <td class="text-success">+₹20K</td>
+                        </tr>
+                        <tr>
+                            <td>Miscellaneous</td>
+                            <td>₹100K</td>
+                            <td>₹90K</td>
+                            <td class="text-success">+₹10K</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Teams Section -->
+    <div class="card custom-card mb-4 shadow-sm border-0">
+        <div class="card-header bg-light d-flex justify-content-between">
+            <h6 class="mb-0">Teams & Members</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Team 1 -->
+                <div class="col-md-4">
+                    <h6>Engineering Team</h6>
+                    <ul class="list-unstyled">
+                        <li>👷 John Smith (Lead Engineer)</li>
+                        <li>👷 Sarah Lee (Civil Engineer)</li>
+                        <li>👷 Raj Kumar (Structural Engineer)</li>
+                    </ul>
+                </div>
+                <!-- Team 2 -->
+                <div class="col-md-4">
+                    <h6>Design Team</h6>
+                    <ul class="list-unstyled">
+                        <li>🎨 Emily Brown (Architect)</li>
+                        <li>🎨 Alex Johnson (Interior Designer)</li>
+                    </ul>
+                </div>
+                <!-- Team 3 -->
+                <div class="col-md-4">
+                    <h6>Procurement Team</h6>
+                    <ul class="list-unstyled">
+                        <li>📦 Maria Garcia (Procurement Manager)</li>
+                        <li>📦 Ahmed Khan (Vendor Coordinator)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Schedule Details Card -->
+    <div class="card custom-card mb-4 shadow-sm border-0">
+        <div class="card-header bg-light d-flex justify-content-between">
+            <h6 class="mb-0">Schedule Details</h6>
+            <button class="btn btn-sm btn-primary">Add Task</button>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-striped mb-0 align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Task</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Days</th>
+                            <th>Remaining Days</th>
+                            <th>Assigned Team</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Foundation Work</td>
+                            <td>01 Jan 2025</td>
+                            <td>15 Feb 2025</td>
+                            <td>45</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                            <td>Engineering</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                            <td>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-success" style="width: 100%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Structural Work</td>
+                            <td>16 Feb 2025</td>
+                            <td>30 Apr 2025</td>
+                            <td>74</td>
+                            <td><span class="badge bg-warning text-dark">20 Days Left</span></td>
+                            <td>Engineering</td>
+                            <td><span class="badge bg-warning text-dark">In Progress</span></td>
+                            <td>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-warning" style="width: 65%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Electrical & Plumbing</td>
+                            <td>01 May 2025</td>
+                            <td>31 Jul 2025</td>
+                            <td>92</td>
+                            <td><span class="badge bg-secondary">Not Started</span></td>
+                            <td>Procurement</td>
+                            <td><span class="badge bg-secondary">Pending</span></td>
+                            <td>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-secondary" style="width: 0%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Interior Finishing</td>
+                            <td>01 Aug 2025</td>
+                            <td>31 Oct 2025</td>
+                            <td>92</td>
+                            <td><span class="badge bg-secondary">Not Started</span></td>
+                            <td>Design</td>
+                            <td><span class="badge bg-secondary">Pending</span></td>
+                            <td>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-secondary" style="width: 0%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Final Inspection & Handover</td>
+                            <td>01 Nov 2025</td>
+                            <td>31 Dec 2025</td>
+                            <td>61</td>
+                            <td><span class="badge bg-secondary">Not Started</span></td>
+                            <td>Management</td>
+                            <td><span class="badge bg-secondary">Pending</span></td>
+                            <td>
+                                <div class="progress" style="height: 6px;">
+                                    <div class="progress-bar bg-secondary" style="width: 0%"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock content %}

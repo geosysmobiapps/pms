@@ -1,0 +1,18 @@
+@import url("base.css");
+
+
+.card.custom-card {
+    border: 1px solid var(--secondary-color)!important;
+    overflow: hidden;
+}
+
+.card-header {
+    /* background: linear-gradient(to right, var(--xlight-color), var(--light-color)); */
+    padding: 15px 20px;
+    border-radius: 0!important;
+}
+
+.card-body {
+    padding: 15px 20px;
+    border-radius: 0!important;
+}
