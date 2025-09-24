@@ -10,14 +10,14 @@ class DashboardView(View):
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
 
-class ActivitiesView(View):
-    template_name = "staff/activities.html"
+class ScheduleView(View):
+    template_name = "staff/schedule.html"
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)
     
-class LogActivityView(View):
-    template_name = "staff/log_activity.html"
+class LogScheduleView(View):
+    template_name = "staff/log_schedule.html"
 
     def get(self, request, *args, **kwargs):
         return render(request, self.template_name)

@@ -6,10 +6,10 @@
     <!-- Page Header -->
     <div class="my-3 page-header-breadcrumb d-flex align-items-center justify-content-between">
         <h1 class="page-title fw-bold fs-18 mb-0 txt-dark"> 
-            <span><i class="ri-calendar-event-fill"></i> My Activities</span> 
+            <span><i class="ri-calendar-event-fill"></i> My Schedules</span> 
         </h1>
-        <a href="{% url 'staff:log_activity' %}" class="btn btn-sm btn-primary">
-            <i class="ri-add-line me-1"></i> Log Activity
+        <a href="{% url 'staff:log_schedule' %}" class="btn btn-sm btn-primary">
+            <i class="ri-add-line me-1"></i> Add Schedule
         </a>
     </div>
 
@@ -27,11 +27,12 @@
                             <option>Westside Commercial</option>
                         </select>
                         <select class="form-select form-select-sm" style="width: 140px;">
-                            <option>All Types</option>
-                            <option>Site Work</option>
-                            <option>Meetings</option>
-                            <option>Inspections</option>
-                            <option>Documentation</option>
+                            <option>All Status</option>
+                            <option>Scheduled</option>
+                            <option>In Progress</option>
+                            <option>Completed</option>
+                            <option>Transferred</option>
+                            <option>Paused</option>
                         </select>
                         <input type="date" class="form-control form-control-sm" style="width: 150px;">
                         <button class="btn btn-sm btn-outline-primary">
@@ -43,12 +44,12 @@
         </div>
     </div>
 
-    <!-- Activities Timeline with Expenses -->
+    <!-- Schedules Timeline -->
     <div class="row">
         <div class="col-xxl-12">
             <div class="card custom-card">
                 <div class="card-header justify-content-between">
-                    <div class="card-title">Recent Activities & Expenses</div>
+                    <div class="card-title">Recent Schedules</div>
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-sm btn-outline-primary active">Day</button>
                         <button type="button" class="btn btn-sm btn-outline-primary">Week</button>
@@ -65,13 +66,16 @@
                             <div class="timeline-content">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-1">Concrete Pouring - Level 5</h6>
-                                    <span class="text-muted fs-12">2 hours ago</span>
+                                    <span class="text-muted fs-12">9:00 AM - 1:30 PM</span>
                                 </div>
                                 <p class="mb-1 text-muted">Riverfront Towers • 4.5 hours</p>
-                                <p class="mb-0">Supervised concrete pouring operation for the 5th floor slab. All safety protocols followed.</p>
+                                <p class="mb-0">Supervise concrete pouring operation for the 5th floor slab.</p>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-primary-transparent">Site Work</span>
-                                    <span class="text-success fw-semibold">₹1,200</span>
+                                    <span class="badge bg-primary-transparent">Scheduled</span>
+                                    <div>
+                                        <button class="btn btn-sm btn-outline-primary me-1">Start</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Transfer</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -81,13 +85,16 @@
                             <div class="timeline-content">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-1">Supplier Meeting</h6>
-                                    <span class="text-muted fs-12">4 hours ago</span>
+                                    <span class="text-muted fs-12">2:00 PM - 3:30 PM</span>
                                 </div>
                                 <p class="mb-1 text-muted">Harbor View Residences • 1.5 hours</p>
-                                <p class="mb-0">Met with concrete suppliers to discuss delivery schedule for next week.</p>
+                                <p class="mb-0">Meet with concrete suppliers to discuss delivery schedule.</p>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-info-transparent">Meeting</span>
-                                    <span class="text-success fw-semibold">₹45</span>
+                                    <span class="badge bg-warning-transparent">In Progress</span>
+                                    <div>
+                                        <button class="btn btn-sm btn-outline-success me-1">Complete</button>
+                                        <button class="btn btn-sm btn-outline-warning">Pause</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -96,33 +103,33 @@
                         <div class="timeline-date">Yesterday</div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-point bg-info"></div>
+                            <div class="timeline-point bg-success"></div>
                             <div class="timeline-content">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-1">Safety Inspection</h6>
-                                    <span class="text-muted fs-12">Yesterday, 3:45 PM</span>
+                                    <span class="text-muted fs-12">1:45 PM - 3:45 PM</span>
                                 </div>
                                 <p class="mb-1 text-muted">Riverfront Towers • 2 hours</p>
-                                <p class="mb-0">Conducted weekly safety inspection. Noted two issues that need addressing.</p>
+                                <p class="mb-0">Conduct weekly safety inspection and document findings.</p>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-warning-transparent">Inspection</span>
-                                    <span class="text-success fw-semibold">₹0</span>
+                                    <span class="badge bg-success-transparent">Completed</span>
+                                    <button class="btn btn-sm btn-outline-secondary">View Report</button>
                                 </div>
                             </div>
                         </div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-point bg-success"></div>
+                            <div class="timeline-point bg-info"></div>
                             <div class="timeline-content">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-1">Progress Report</h6>
-                                    <span class="text-muted fs-12">Yesterday, 11:30 AM</span>
+                                    <span class="text-muted fs-12">10:30 AM - 11:30 AM</span>
                                 </div>
                                 <p class="mb-1 text-muted">Documentation • 1 hour</p>
-                                <p class="mb-0">Prepared weekly progress report for client review and approval.</p>
+                                <p class="mb-0">Prepare weekly progress report for client review.</p>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-secondary-transparent">Documentation</span>
-                                    <span class="text-success fw-semibold">₹0</span>
+                                    <span class="badge bg-info-transparent">Transferred</span>
+                                    <span class="text-muted fs-12">To: Project Manager</span>
                                 </div>
                             </div>
                         </div>
@@ -131,17 +138,17 @@
                         <div class="timeline-date">22 Nov 2023</div>
                         
                         <div class="timeline-item">
-                            <div class="timeline-point bg-danger"></div>
+                            <div class="timeline-point bg-secondary"></div>
                             <div class="timeline-content">
                                 <div class="d-flex justify-content-between">
                                     <h6 class="mb-1">Material Purchase</h6>
-                                    <span class="text-muted fs-12">2 days ago</span>
+                                    <span class="text-muted fs-12">9:00 AM - 12:00 PM</span>
                                 </div>
                                 <p class="mb-1 text-muted">Westside Commercial • 3 hours</p>
-                                <p class="mb-0">Purchased construction materials for upcoming phase.</p>
+                                <p class="mb-0">Purchase construction materials for upcoming phase.</p>
                                 <div class="mt-2 d-flex justify-content-between align-items-center">
-                                    <span class="badge bg-danger-transparent">Materials</span>
-                                    <span class="text-success fw-semibold">₹7,500</span>
+                                    <span class="badge bg-secondary-transparent">Paused</span>
+                                    <button class="btn btn-sm btn-outline-primary">Resume</button>
                                 </div>
                             </div>
                         </div>
@@ -156,10 +163,10 @@
         <div class="col-xxl-6">
             <div class="card custom-card">
                 <div class="card-header">
-                    <div class="card-title">Weekly Time Summary</div>
+                    <div class="card-title">Weekly Schedule Summary</div>
                 </div>
                 <div class="card-body">
-                    <div id="weekly-time-chart"></div>
+                    <div id="weekly-schedule-chart"></div>
                 </div>
             </div>
         </div>
@@ -167,10 +174,10 @@
         <div class="col-xxl-6">
             <div class="card custom-card">
                 <div class="card-header">
-                    <div class="card-title">Activity Distribution</div>
+                    <div class="card-title">Schedule Status Distribution</div>
                 </div>
                 <div class="card-body">
-                    <div id="activity-distribution-chart"></div>
+                    <div id="schedule-distribution-chart"></div>
                 </div>
             </div>
         </div>
@@ -180,10 +187,10 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Weekly Time Chart
-        var timeOptions = {
+        // Weekly Schedule Chart
+        var scheduleOptions = {
             series: [{
-                name: 'Hours',
+                name: 'Hours Scheduled',
                 data: [6.5, 7, 8.5, 6, 9, 0, 0]
             }],
             chart: {
@@ -213,13 +220,13 @@
             }
         };
 
-        var timeChart = new ApexCharts(document.querySelector("#weekly-time-chart"), timeOptions);
-        timeChart.render();
+        var scheduleChart = new ApexCharts(document.querySelector("#weekly-schedule-chart"), scheduleOptions);
+        scheduleChart.render();
         
-        // Activity Distribution Chart
+        // Schedule Distribution Chart
         var distributionOptions = {
-            series: [44, 55, 41, 17],
-            labels: ['Site Work', 'Meetings', 'Inspections', 'Documentation'],
+            series: [35, 25, 20, 10, 10],
+            labels: ['Scheduled', 'In Progress', 'Completed', 'Transferred', 'Paused'],
             chart: {
                 type: 'donut',
                 height: 250,
@@ -227,7 +234,7 @@
                     show: false
                 }
             },
-            colors: ['#4B164C', '#DD88CF', '#F8E7F6', '#A45FB9'],
+            colors: ['#4B164C', '#FF7F3E', '#28a745', '#17a2b8', '#6c757d'],
             legend: {
                 position: 'bottom'
             },
@@ -240,7 +247,7 @@
             }
         };
 
-        var distributionChart = new ApexCharts(document.querySelector("#activity-distribution-chart"), distributionOptions);
+        var distributionChart = new ApexCharts(document.querySelector("#schedule-distribution-chart"), distributionOptions);
         distributionChart.render();
     });
 </script>
@@ -299,8 +306,8 @@
         background: #28a745;
     }
     
-    .timeline-point.bg-danger {
-        background: #dc3545;
+    .timeline-point.bg-secondary {
+        background: #6c757d;
     }
     
     .timeline-content {
@@ -322,11 +329,6 @@
     
     .timeline-item:last-child:after {
         display: none;
-    }
-
-    /* Expense amount styling */
-    .text-success.fw-semibold {
-        font-size: 1.1rem;
     }
 </style>
 {% endblock %}

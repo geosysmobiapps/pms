@@ -40,31 +40,27 @@
 <body>
     <div class="page">
       <!-- Fixed Top Header -->
-<header class="app-header" id="header">
-    <div class="main-header-container container-fluid">
-        <div class="d-flex justify-content-between align-items-center">
-            <!-- Logo -->
-            <div class="header-content-left">
-                <a href="{% url 'staff:dashboard' %}">
-                    <img src="{% static 'assets/images/brand-logos/LOGO.png' %}" alt="logo" class="brand-logo">
-                </a>
-            </div>
-
-            <!-- User Menu -->
-            <div class="header-content-right">
-                <img src="{% static 'images/user.jpg' %}" alt="User" class="user-avatar">
-
-                <a href="#" class="notification-icon">
-                    <i class="ri-notification-3-line"></i>
-                </a>
-               
-                <a href="#" class="logout-icon">
-                    <i class="ri-logout-box-r-line"></i>
-                </a>
-            </div>
+<header class="app-header">
+    <div class="main-header-container container-fluid d-flex align-items-center justify-content-between">
+        
+        <!-- Left Logo -->
+        <div class="header-content-left">
+            <a href="{% url 'staff:dashboard' %}">
+                <img src="{% static 'images/LOGO.png' %}" alt="logo" class="brand-logo">
+            </a>
         </div>
+
+        <!-- Right Menu -->
+        <div class="header-content-right">
+            <img src="{% static 'images/user.jpg' %}" alt="User" class="user-avatar">
+            <a href="{% url 'accounts:login' %}" class="logout-icon">
+                <i class="ri-logout-box-r-line"></i>
+            </a>
+        </div>
+
     </div>
 </header>
+
 
 <!-- U-Shaped Gradient Background -->
 <div class="header-shape"></div>
@@ -83,10 +79,10 @@
                 <p>Home</p>
             </div>
 
-            <div class="footer-item {% if request.resolver_match.url_name == 'activities' %}active{% endif %}" 
-                 onclick="location.href='{% url 'staff:activities' %}'">
+            <div class="footer-item {% if request.resolver_match.url_name == 'schedule' %}active{% endif %}" 
+                 onclick="location.href='{% url 'staff:schedule' %}'">
                 <i class="ri-calendar-event-fill"></i>
-                <p>Activities</p>
+                <p>Schedules</p>
             </div>
 
             <div class="footer-item {% if request.resolver_match.url_name == 'projects' %}active{% endif %}" 
