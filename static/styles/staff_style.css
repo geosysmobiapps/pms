@@ -17,12 +17,9 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
-    height: 80px; /* header bar height */
+    height: 80px;
     background: linear-gradient(135deg, var(--dark-accent) 0%, var(--medium-accent) 100%);
-    display: flex;
-    align-items: center;
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-    border-block-end:none !important;
 }
 
 /* Curve background directly under fixed header */
@@ -48,27 +45,44 @@ body {
 
 
 .brand-logo {
-    width: 150px;
-    height: 75px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
+    width: 130px !important;
+    height: 40px !important;
+   
+
+}
+/* The container handles the left/right spacing */
+.main-header-container {
+    height: 80px;                   /* match header height */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* <-- this does the real work */
+    padding-inline: 16px;           /* or use Bootstrap's px classes */
+}
+.header-content-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* ❌ remove margin-left:auto and justify-content:flex-end */
+}
+
+.brand-logo {
+    width: 130px !important;
+    height: 40px !important;
 }
 
 .user-avatar {
-    width: 52px;
-    height: 52px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    border: 2px solid #fff; 
     object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
 }
 
-.logout-icon {
-    color: #4B164C;
-    font-size: 1.6rem;
-    margin-left: 5px;
-    transition: all 0.3s ease;
+.logout-icon i {
+    font-size: 22px;
+    color: #333;
+    transition: all 0.2s;
 }
+
 .logout-icon:hover {
     color: var(--light-accent);
     transform: translateY(-2px);
@@ -89,15 +103,15 @@ body {
     z-index: 5;
 }
 /* ✅ Default (mobile & small screens) */
-.main-header-container .header-content-right {
-    padding-inline-start: 268px !important;
+.main-header-container  {
+    padding-inline-start: 13px !important;
     gap: 9px;
 }
 
 /* ✅ Desktop override */
 @media (min-width: 992px) {  /* or whatever breakpoint you use */
-    .main-header-container .header-content-right {
-        padding-inline-start: 66rem !important;
+    .main-header-container {
+        padding-inline-start: 0rem !important;
     }
 }
 
@@ -160,6 +174,7 @@ body {
     border: 1px solid var(--light-accent);
     margin-bottom: 1.5rem;
     box-shadow: 0 2px 2px var(--dark-accent);
+    min-height: 140px;
 }
 
 .card.custom-card:hover {
@@ -398,9 +413,7 @@ body {
         color: #4B164C;
     }
     
-    .header-content-right {
-        gap: 15px;
-    }
+
     
     .profile-card-image {
         width: 80px;

@@ -1,0 +1,244 @@
+{% extends 'staff/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="my-3 page-header-breadcrumb d-flex align-items-center justify-content-between">
+        <h1 class="page-title fw-bold fs-18 mb-0 txt-dark"> 
+            <span><i class="ri-calendar-event-fill"></i> Add New Schedule</span> 
+        </h1>
+        <a href="{% url 'staff:schedule' %}" class="btn btn-sm btn-primary">
+            <i class="ri-arrow-left-line me-1"></i>Back
+        </a>
+    </div>
+
+    <!-- Schedule Entry Form -->
+    <div class="row">
+        <div class="col-xxl-8 mx-auto">
+            <div class="card custom-card">
+                <div class="card-header">
+                    <div class="card-title">Schedule Details</div>
+                </div>
+                <div class="card-body">
+                    <form method="post" id="scheduleForm">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Date <span class="text-danger">*</span></label>
+                                    <input type="date" class="form-control" name="schedule_date" required value="{{ today|date:'Y-m-d' }}">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Project <span class="text-danger">*</span></label>
+                                    <select class="form-select" name="project" required>
+                                        <option value="">Select Project</option>
+                                        <option value="riverfront">Riverfront Towers</option>
+                                        <option value="harbor">Harbor View Residences</option>
+                                        <option value="westside">Westside Commercial</option>
+                                        <option value="parkview">Parkview Hospital</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Schedule Type <span class="text-danger">*</span></label>
+                                    <select class="form-select" name="schedule_type" required>
+                                        <option value="">Select Type</option>
+                                        <option value="site_work">Site Work</option>
+                                        <option value="meeting">Meetings</option>
+                                        <option value="inspection">Inspections</option>
+                                        <option value="documentation">Documentation</option>
+                                        <option value="travel">Travel</option>
+                                        <option value="material">Material Purchase</option>
+                                        <option value="equipment">Equipment Rental</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Duration (Hours) <span class="text-danger">*</span></label>
+                                    <input type="number" class="form-control" name="hours" step="0.5" min="0.5" max="24" required placeholder="e.g., 8.5">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Start Time <span class="text-danger">*</span></label>
+                                    <input type="time" class="form-control" name="start_time" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">End Time</label>
+                                    <input type="time" class="form-control" name="end_time" readonly>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mb-3">
+                                    <label class="form-label">Schedule Description <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="description" rows="3" placeholder="Describe the scheduled task..." required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4">
+
+                        <div class="row">
+                            <div class="col-12">
+                                <h5 class="mb-3">Schedule Actions</h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Action <span class="text-danger">*</span></label>
+                                    <select class="form-select" name="action" required>
+                                        <option value="">Select Action</option>
+                                        <option value="schedule">Schedule</option>
+                                        <option value="transfer">Transfer</option>
+                                        <option value="pause">Pause</option>
+                                        <option value="resume">Resume</option>
+                                        <option value="complete">Complete</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="transferToField" style="display: none;">
+                                <div class="mb-3">
+                                    <label class="form-label">Transfer To</label>
+                                    <select class="form-select" name="transfer_to">
+                                        <option value="">Select Staff</option>
+                                        <option value="manager">Project Manager</option>
+                                        <option value="supervisor">Site Supervisor</option>
+                                        <option value="engineer">Structural Engineer</option>
+                                        <option value="assistant">Assistant</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12" id="reasonField" style="display: none;">
+                                <div class="mb-3">
+                                    <label class="form-label">Reason</label>
+                                    <textarea class="form-control" name="reason" rows="2" placeholder="Provide reason for action..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'staff:schedule' %}" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save Schedule</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Schedules Preview -->
+    <div class="row mt-4">
+        <div class="col-xxl-8 mx-auto">
+            <div class="card custom-card">
+                <div class="card-header justify-content-between">
+                    <div class="card-title">Recent Schedules</div>
+                    <a href="{% url 'staff:schedule' %}" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="card-body">
+                    <div class="schedules-preview">
+                        <div class="d-flex mb-3">
+                            <div class="avatar avatar-sm bg-primary-transparent rounded-circle flex-shrink-0 me-3">
+                                <i class="ri-building-fill text-primary"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Concrete Pouring - Level 5</h6>
+                                <p class="text-muted mb-1">Riverfront Towers • 4.5 hours • Today</p>
+                                <p class="mb-0">Supervise concrete pouring operation for the 5th floor slab.</p>
+                                <div class="mt-2">
+                                    <span class="badge bg-primary-transparent me-2">Scheduled</span>
+                                    <span class="text-muted fs-12">9:00 AM - 1:30 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-3">
+                            <div class="avatar avatar-sm bg-warning-transparent rounded-circle flex-shrink-0 me-3">
+                                <i class="ri-calendar-event-fill text-warning"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Supplier Meeting</h6>
+                                <p class="text-muted mb-1">Harbor View Residences • 1.5 hours • Today</p>
+                                <p class="mb-0">Meet with concrete suppliers to discuss delivery schedule.</p>
+                                <div class="mt-2">
+                                    <span class="badge bg-warning-transparent me-2">In Progress</span>
+                                    <span class="text-muted fs-12">2:00 PM - 3:30 PM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Show/hide fields based on action selection
+        const actionSelect = document.querySelector('select[name="action"]');
+        const transferToField = document.getElementById('transferToField');
+        const reasonField = document.getElementById('reasonField');
+        
+        actionSelect.addEventListener('change', function() {
+            if (this.value === 'transfer') {
+                transferToField.style.display = 'block';
+                reasonField.style.display = 'block';
+            } else if (this.value === 'pause' || this.value === 'resume') {
+                transferToField.style.display = 'none';
+                reasonField.style.display = 'block';
+            } else {
+                transferToField.style.display = 'none';
+                reasonField.style.display = 'none';
+            }
+        });
+        
+        // Calculate end time based on start time and duration
+        const startTimeInput = document.querySelector('input[name="start_time"]');
+        const hoursInput = document.querySelector('input[name="hours"]');
+        const endTimeInput = document.querySelector('input[name="end_time"]');
+        
+        function calculateEndTime() {
+            if (startTimeInput.value && hoursInput.value) {
+                const startTime = new Date(`2000-01-01T${startTimeInput.value}`);
+                const duration = parseFloat(hoursInput.value) * 60 * 60 * 1000; // Convert hours to milliseconds
+                const endTime = new Date(startTime.getTime() + duration);
+                
+                // Format to HH:MM
+                const hours = endTime.getHours().toString().padStart(2, '0');
+                const minutes = endTime.getMinutes().toString().padStart(2, '0');
+                
+                endTimeInput.value = `${hours}:${minutes}`;
+            }
+        }
+        
+        startTimeInput.addEventListener('change', calculateEndTime);
+        hoursInput.addEventListener('input', calculateEndTime);
+    });
+</script>
+
+<style>
+    .schedules-preview .d-flex {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .schedules-preview .d-flex:last-child {
+        border-bottom: none;
+    }
+    
+    .avatar-sm {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+    }
+</style>
+{% endblock %}

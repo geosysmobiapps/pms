@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PMS – Login</title>
+    <title>PROJO</title>
     <meta name="Description" content="PMS.Powered by GEOSYS IT SOLUTIONS PVT LTD">
         <meta name="Author" content="Geosys IT Solutions Private Limited">
     <link rel="icon" href="{% static 'images/LOGO.png' %}" type="image/x-icon">
@@ -27,53 +27,53 @@
             </div>
 
             <h3 class="text-center text-light">Sign In</h3>
-            <form method="post" action="">
-                {% csrf_token %}
-                <div class="mb-3">
-                    <label class="form-label text-white">Account Type</label>
-                    <select class="form-control" name="account_type" required>
-                        <option value="">Select Account Type</option>
-                        <option value="admin">Admin</option>
-                        <option value="agent">Agent</option>
-                    </select>
-                </div>
+           <form method="post" action="">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label text-white">Account Type</label>
+        <select class="form-control" name="account_type" required>
+            <option value="">Select Account Type</option>
+            <option value="admin">Admin</option>
+            <option value="staff">Staff</option>
+        </select>
+    </div>
 
-                <div class="mb-3">
-                    <label class="form-label text-white">Username</label>
-                    <input type="text" class="form-control {% if auth_error %}is-invalid{% endif %}"
-                           name="username" placeholder="Enter username" required>
-                    {% if auth_error %}
-                        <div class="invalid-feedback">Invalid username or password</div>
-                    {% endif %}
-                </div>
+    <div class="mb-3">
+        <label class="form-label text-white">Username</label>
+        <input type="text" class="form-control {% if auth_error %}is-invalid{% endif %}"
+               name="username" value="Username" placeholder="Enter username" required>
+        {% if auth_error %}
+            <div class="invalid-feedback">{{ auth_error }}</div>
+        {% endif %}
+    </div>
 
-                <div class="mb-3">
-                    <label class="form-label text-white">Password</label>
-                    <input type="password" class="form-control {% if auth_error %}is-invalid{% endif %}"
-                           name="password" placeholder="Enter password" required>
-                    {% if auth_error %}
-                        <div class="invalid-feedback">Invalid username or password</div>
-                    {% endif %}
-                </div>
+    <div class="mb-3">
+        <label class="form-label text-white">Password</label>
+        <input type="password" class="form-control {% if auth_error %}is-invalid{% endif %}"
+               name="password" value="Password" placeholder="Enter password" required>
+        {% if auth_error %}
+            <div class="invalid-feedback">{{ auth_error }}</div>
+        {% endif %}
+    </div>
 
-                <!-- Captcha -->
-                <div class="mb-3 d-flex gap-2 align-items-center">
-                    <div id="captcha-display"
-                        class="captcha-box p-1 text-center"
-                        style="width:100px;height:33px;font-weight:bold;
-                        user-select:none;color:#4B164C;">
-                        5090
-                    </div>
-                    <button type="button" class="btn refreshCaptcha" style="background-color: #4B164C;"
-                            onclick="refreshDemoCaptcha()"><i class="bi bi-arrow-clockwise" style="color: white;"></i></button>
-                    <input type="text" class="form-control" name="captcha" placeholder="Enter captcha">
-                </div>
+    <!-- Captcha (optional as per your requirement) -->
+    <div class="mb-3 d-flex gap-2 align-items-center">
+        <div id="captcha-display"
+            class="captcha-box p-1 text-center"
+            style="width:100px;height:33px;font-weight:bold;
+            user-select:none;color:#4B164C;">
+            5090
+        </div>
+        <button type="button" class="btn refreshCaptcha" style="background-color: #4B164C;"
+                onclick="refreshDemoCaptcha()"><i class="bi bi-arrow-clockwise" style="color: white;"></i></button>
+        <input type="text" value="5090" class="form-control" name="captcha" placeholder="Enter captcha">
+    </div>
 
-                <button type="submit" class="btn btn-login mt-2">Submit</button>
-                <div class="forgot text-center mt-3">
-                    <a href="#">Forgot Password?</a>
-                </div>
-            </form>
+    <button type="submit" class="btn btn-login mt-2">Submit</button>
+    <div class="forgot text-center mt-3">
+        <a href="#">Forgot Password?</a>
+    </div>
+</form>
         </div>
     </div>
 
